@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import Footer from '../components/Footer';
 
 export default function Login({ history }) {
   const [user, setUser] = useState({
@@ -62,7 +61,6 @@ export default function Login({ history }) {
       >
         Entrar
       </button>
-      <Footer />
     </form>
   );
 }

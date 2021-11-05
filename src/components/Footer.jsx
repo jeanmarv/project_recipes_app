@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 import './Footer.css';
 
-export default function Footer({ history }) {
+export default function Footer() {
+  const history = useHistory();
   return (
     <footer className="footer" data-testid="footer">
       <input
