@@ -5,10 +5,10 @@ import SearchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
 export default function Header() {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const history = useHistory();
   const [showInput, setShowInput] = useState(false);
-  const path = location.pathname.split('/')[1];
+  const path = pathname.split('/')[1];
   const title = path[0].toUpperCase() + path.substr(1);
 
   return (
