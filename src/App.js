@@ -9,7 +9,6 @@ import Profile from './pages/Profile';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import MadeRecipes from './pages/MadeRecipes';
 
-
 function App() {
   return (
     <BrowserRouter>
