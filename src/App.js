@@ -9,17 +9,20 @@ import Profile from './pages/Profile';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import MadeRecipes from './pages/MadeRecipes';
 import DrinksPage from './pages/DrinksPage';
+import DrinkProvider from './context/DrinkProvider';
 
 function App() {
   return (
     <BrowserRouter>
       <RecipeProvider>
-        <Route exact path="/" component={ Login } />
-        <Route path="/comidas" component={ MainPage } />
-        <Route path="/perfil" component={ Profile } />
-        <Route exact path="/receitas-favoritas" component={ FavoriteRecipes } />
-        <Route exact path="/receitas-feitas" component={ MadeRecipes } />
-        <Route path="/bebidas" component={ DrinksPage } />
+        <DrinkProvider>
+          <Route exact path="/" component={ Login } />
+          <Route path="/comidas" component={ MainPage } />
+          <Route path="/perfil" component={ Profile } />
+          <Route exact path="/receitas-favoritas" component={ FavoriteRecipes } />
+          <Route exact path="/receitas-feitas" component={ MadeRecipes } />
+          <Route path="/bebidas" component={ DrinksPage } />
+        </DrinkProvider>
       </RecipeProvider>
     </BrowserRouter>
   );
