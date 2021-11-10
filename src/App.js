@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import MadeRecipes from './pages/MadeRecipes';
 import DrinksPage from './pages/DrinksPage';
+import ExplorePage from './pages/ExplorePage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/receitas-favoritas" component={ FavoriteRecipes } />
         <Route exact path="/receitas-feitas" component={ MadeRecipes } />
         <Route path="/bebidas" component={ DrinksPage } />
+        <Route path="/explorar" component={ ExplorePage } />
       </RecipeProvider>
     </BrowserRouter>
   );
