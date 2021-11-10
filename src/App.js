@@ -10,6 +10,8 @@ import FavoriteRecipes from './pages/FavoriteRecipes';
 import MadeRecipes from './pages/MadeRecipes';
 import DrinksPage from './pages/DrinksPage';
 import ExplorePage from './pages/ExplorePage';
+import ExploreDrinks from './pages/ExploreDrinks';
+import ExploreFood from './pages/ExploreFood';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route exact path="/receitas-feitas" component={ MadeRecipes } />
         <Route path="/bebidas" component={ DrinksPage } />
         <Route path="/explorar" component={ ExplorePage } />
+        <Route exact path="/explorar/comidas" component={ ExploreFood } />
+        <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />
       </RecipeProvider>
     </BrowserRouter>
   );
