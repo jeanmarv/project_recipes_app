@@ -1,36 +1,54 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import RecipeContext from '../context/RecipeContext';
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
-  const [radioValue, setRadioValue] = useState('');
-  // const [filteredIngredients, setFilteredIngredients] = useState([]);
+  const [radioValue, setRadioValue] = useState('ingredient');
+
+  const {
+    setSearchFood,
+    fetchComidas,
+    fetchedComidas,
+  } = useContext(RecipeContext);
+
+  async function checkURL() {
+    if (radioValue === 'ingredient') {
+      await setSearchFood(`filter.php?i=${inputValue}`);
+    }
+
+    if (radioValue === 'name') {
+      await setSearchFood(`search.php?s=${inputValue}`);
+    }
+
+    if (radioValue === 'firstLetter') {
+      if (inputValue.length > 1 && radioValue === 'firstLetter') {
+        global.alert('Sua busca deve conter somente 1 (um) caracter');
+      } else {
+        await setSearchFood(`search.php?f=${inputValue}`);
+      }
+    }
+  }
 
   function handleInputChange({ target }) {
     setInputValue(target.value);
+    checkURL();
   }
 
   function handleRadioChange({ target }) {
     setRadioValue(target.value);
-    console.log(target.value);
+    checkURL();
   }
 
-  function handleClickBuscar() {
-    if (radioValue === 'ingredient') {
-      // requisição filtro ingrediente
-    }
-
-    if (radioValue === 'name') {
-      // requisição filtro name
-    }
-
-    if (radioValue === 'firstLetter') {
-      // requisição filtro primeira letra
-    }
-    if (inputValue.length > 1 && radioValue === 'firstLetter') {
-      global.alert('Sua busca deve conter somente 1 (um) caracter');
-    }
+  async function handleClickBuscar() {
+    checkURL();
+    await fetchComidas();
   }
 
+  useEffect(() => {
+    checkURL();
+  }, [inputValue]);
+
+  console.log(fetchedComidas);
   return (
     <>
       <input
@@ -41,6 +59,7 @@ export default function SearchBar() {
         value={ inputValue }
         onChange={ handleInputChange }
       />
+
       <label htmlFor="ingredient">
         Ingredientes
         <input
@@ -49,6 +68,7 @@ export default function SearchBar() {
           data-testid="ingredient-search-radio"
           onChange={ handleRadioChange }
           value="ingredient"
+          name="radio-search"
         />
       </label>
       <label htmlFor="name">
@@ -59,6 +79,7 @@ export default function SearchBar() {
           data-testid="name-search-radio"
           value="name"
           onChange={ handleRadioChange }
+          name="radio-search"
         />
       </label>
       <label htmlFor="first-letter">
@@ -66,11 +87,14 @@ export default function SearchBar() {
         <input
           type="radio"
           id="first-letter"
+          firstLetter
           data-testid="first-letter-search-radio"
           value="firstLetter"
           onChange={ handleRadioChange }
+          name="radio-search"
         />
       </label>
+
       <button
         type="button"
         data-testid="exec-search-btn"
@@ -79,6 +103,5 @@ export default function SearchBar() {
         Buscar
       </button>
     </>
-
   );
 }
