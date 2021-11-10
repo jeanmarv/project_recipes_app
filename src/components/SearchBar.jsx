@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import RecipeContext from '../context/RecipeContext';
 
 export default function SearchBar() {
@@ -9,41 +9,46 @@ export default function SearchBar() {
     setSearchFood,
     fetchComidas,
     fetchedComidas,
-    searchFood } = useContext(RecipeContext);
+  } = useContext(RecipeContext);
 
-  function checkURL(radioValueTarget) {
-    console.log('inputValue', inputValue);
-    if (radioValueTarget === 'ingredient') {
-      setSearchFood(`filter.php?i=${inputValue}`);
+  async function checkURL() {
+    if (radioValue === 'ingredient') {
+      await setSearchFood(`filter.php?i=${inputValue}`);
     }
 
-    if (radioValueTarget === 'name') {
-      setSearchFood(`search.php?s=${inputValue}`);
+    if (radioValue === 'name') {
+      await setSearchFood(`search.php?s=${inputValue}`);
     }
 
-    if (radioValueTarget === 'firstLetter') {
-      setSearchFood(`search.php?f=${inputValue}`);
+    if (radioValue === 'firstLetter') {
+      if (inputValue.length > 1 && radioValue === 'firstLetter') {
+        global.alert('Sua busca deve conter somente 1 (um) caracter');
+      } else {
+        await setSearchFood(`search.php?f=${inputValue}`);
+      }
     }
-    console.log('searchFood', searchFood);
   }
 
   function handleInputChange({ target }) {
     setInputValue(target.value);
-    checkURL(target.value);
+    checkURL();
   }
 
-  const handleRadioChange = useCallback(({ target }) => {
+  function handleRadioChange({ target }) {
     setRadioValue(target.value);
-  }, []);
+    checkURL();
+  }
 
   async function handleClickBuscar() {
-    if (inputValue.length > 1 && radioValue === 'firstLetter') {
-      global.alert('Sua busca deve conter somente 1 (um) caracter');
-    }
+    checkURL();
     await fetchComidas();
-    console.log(fetchedComidas);
   }
 
+  useEffect(() => {
+    checkURL();
+  }, [inputValue]);
+
+  console.log(fetchedComidas);
   return (
     <>
       <input
