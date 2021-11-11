@@ -52,6 +52,7 @@ export default function CategoryButtons() {
   //   }
   //   setNameCategory(target.id);
   // }
+  
   console.log(dataApi);
   return (
     <div>
@@ -69,7 +70,6 @@ export default function CategoryButtons() {
           key={ strCategory }
           data-testid={ `${strCategory}-category-filter` }
           style={ { width: '25%', margin: '5px 0.5px' } }
-        // onClick={ (target) => handleClickCategory(target) } Selecionar categoria do botão
         >
           {strCategory}
         </button>
