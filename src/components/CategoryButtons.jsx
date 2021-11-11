@@ -31,7 +31,6 @@ export default function CategoryButtons() {
     requestCategoryButton();
   });
 
-
   async function setButtonAllApi() {
     if (url === 'comidas') {
       const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?i=');
@@ -71,9 +70,6 @@ export default function CategoryButtons() {
           key={ strCategory }
           data-testid={ `${strCategory}-category-filter` }
           style={ { width: '25%', margin: '5px 0.5px' } }
-
-        // onClick={ (target) => handleClickCategory(target) } Selecionar categoria do botão
-
         >
           {strCategory}
         </button>
