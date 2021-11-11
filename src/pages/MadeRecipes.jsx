@@ -3,9 +3,6 @@ import Header from '../components/Header';
 
 export default function MadeRecipes() {
   return (
-    <div>
-      <Header />
-      Receitas Feitas
-    </div>
+    <Header />
   );
 }
