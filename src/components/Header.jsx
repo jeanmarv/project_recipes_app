@@ -4,12 +4,24 @@ import profileIcon from '../images/profileIcon.svg';
 import SearchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
+const exploreIngredients = 'Explorar Ingredientes';
+const title = (path) => {
+  if (path === '/perfil') return 'Perfil';
+  if (path === '/comidas') return 'Comidas';
+  if (path === '/bebidas') return 'Bebidas';
+  if (path === '/receitas-feitas') return 'Receitas Feitas';
+  if (path === '/receitas-favoritas') return 'Receitas Favoritas';
+  if (path === '/explorar') return 'Explorar';
+  if (path === '/explorar/comidas') return 'Explorar Comidas';
+  if (path === '/explorar/bebidas') return 'Explorar Bebidas';
+  if (path === '/explorar/comidas/area') return 'Explorar Origem';
+  if (path === '/explorar/comidas/ingredientes') return exploreIngredients;
+  if (path === '/explorar/bebidas/ingredientes') return exploreIngredients;
+};
 export default function Header() {
   const { pathname } = useLocation();
   const history = useHistory();
   const [showInput, setShowInput] = useState(false);
-  const path = pathname.split('/')[1];
-  const title = path[0].toUpperCase() + path.substr(1);
 
   return (
     <header>
@@ -20,8 +32,10 @@ export default function Header() {
         src={ profileIcon }
         alt="profile-icon"
       />
-      <h1 data-testid="page-title">{ title }</h1>
-      { (title === 'Comidas' || title === 'Bebidas' || title === 'Explorar Origem')
+      <h1 data-testid="page-title">{ title(pathname) }</h1>
+      { (title(pathname) === 'Comidas'
+        || title(pathname) === 'Bebidas'
+        || title(pathname) === 'Explorar Origem')
         ? (
           <input
             type="image"
@@ -31,7 +45,6 @@ export default function Header() {
             onClick={ () => setShowInput(!showInput) }
           />) : null }
       { showInput && <SearchBar /> }
-
     </header>
   );
 }

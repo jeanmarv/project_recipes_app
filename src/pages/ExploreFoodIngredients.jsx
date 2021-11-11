@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import IngredientsCard from '../components/IngredientsCard';
+import Header from '../components/Header';
 
 export default function ExploreFoodIngredients() {
   const [data, setData] = useState([]);
@@ -24,6 +25,7 @@ export default function ExploreFoodIngredients() {
 
   return (
     <>
+      <Header />
       {dataSliced.map((name, index) => (
         <IngredientsCard
           key={ index }

@@ -9,7 +9,7 @@ export default function CategoryButtons() {
   const { pathname } = useLocation();
   const url = pathname.split('/')[1];
   const [category, setCategory] = useState([]); /* botão de categorias, 5 botões */
-  // const [dataApi, setDataApi] = useState([]); /* botão All */
+  const [dataApi, setDataApi] = useState([]); /* botão All */
   // const [toggle, setToggle] = useState(false);
   // const [nameCategory, setNameCategory] = useState(''); /* armazenar nome da categoria escolhida através do click do botão */
 
@@ -52,7 +52,7 @@ export default function CategoryButtons() {
   //   }
   //   setNameCategory(target.id);
   // }
-  // console.log(dataApi);
+  console.log(dataApi);
   return (
     <div>
       <button
