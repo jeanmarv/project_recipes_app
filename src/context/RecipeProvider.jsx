@@ -9,7 +9,6 @@ export default function RecipeProvider({ children }) {
   const URL = `https://www.themealdb.com/api/json/v1/1/${searchFood}`;
 
   async function fetchComidas() {
-    console.log('passou fetchComidas()');
     try {
       const response = await fetch(URL);
       const resolve = await response.json();

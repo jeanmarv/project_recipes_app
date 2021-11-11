@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import MadeRecipes from './pages/MadeRecipes';
 import DrinksPage from './pages/DrinksPage';
+import DrinkProvider from './context/DrinkProvider';
 import ExplorePage from './pages/ExplorePage';
 import ExploreDrinks from './pages/ExploreDrinks';
 import ExploreFood from './pages/ExploreFood';
@@ -16,10 +17,12 @@ import ExploreDrinksIngredients from './pages/ExploreDrinksIngredients';
 import ExploreFoodArea from './pages/ExploreFoodArea';
 import ExploreFoodIngredients from './pages/ExploreFoodIngredients';
 
+
 function App() {
   return (
     <BrowserRouter>
       <RecipeProvider>
+        <DrinkProvider>
         <Route exact path="/" component={ Login } />
         <Route exact path="/comidas" component={ MainPage } />
         <Route exact path="/perfil" component={ Profile } />
@@ -40,6 +43,7 @@ function App() {
           component={ ExploreDrinksIngredients }
         />
         <Route exact path="/explorar/comidas/area" component={ ExploreFoodArea } />
+        </DrinkProvider>
       </RecipeProvider>
     </BrowserRouter>
   );

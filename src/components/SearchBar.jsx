@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
+import DrinkContext from '../context/DrinkContext';
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
@@ -8,24 +10,59 @@ export default function SearchBar() {
   const {
     setSearchFood,
     fetchComidas,
-    fetchedComidas,
   } = useContext(RecipeContext);
 
-  async function checkURL() {
+  const {
+    setSearchDrink,
+    fetchDrinks,
+  } = useContext(DrinkContext);
+
+  // find location (http)
+  const { pathname } = useLocation();
+  const path = pathname.split('/')[1];
+  const title = path[0].toUpperCase() + path.substr(1);
+
+  function checkFood() {
     if (radioValue === 'ingredient') {
-      await setSearchFood(`filter.php?i=${inputValue}`);
+      setSearchFood(`filter.php?i=${inputValue}`);
     }
 
     if (radioValue === 'name') {
-      await setSearchFood(`search.php?s=${inputValue}`);
+      setSearchFood(`search.php?s=${inputValue}`);
     }
 
     if (radioValue === 'firstLetter') {
       if (inputValue.length > 1 && radioValue === 'firstLetter') {
         global.alert('Sua busca deve conter somente 1 (um) caracter');
       } else {
-        await setSearchFood(`search.php?f=${inputValue}`);
+        setSearchFood(`search.php?f=${inputValue}`);
       }
+    }
+  }
+
+  function checkDrink() {
+    if (radioValue === 'ingredient') {
+      setSearchDrink(`filter.php?i=${inputValue}`);
+    }
+
+    if (radioValue === 'name') {
+      setSearchDrink(`search.php?s=${inputValue}`);
+    }
+
+    if (radioValue === 'firstLetter') {
+      if (inputValue.length > 1 && radioValue === 'firstLetter') {
+        global.alert('Sua busca deve conter somente 1 (um) caracter');
+      } else {
+        setSearchDrink(`search.php?f=${inputValue}`);
+      }
+    }
+  }
+
+  function checkURL() {
+    if (title === 'Comidas') {
+      checkFood();
+    } else if (title === 'Bebidas') {
+      checkDrink();
     }
   }
 
@@ -41,14 +78,17 @@ export default function SearchBar() {
 
   async function handleClickBuscar() {
     checkURL();
-    await fetchComidas();
+    if (title === 'Comidas') {
+      await fetchComidas();
+    } else if (title === 'Bebidas') {
+      await fetchDrinks();
+    }
   }
 
   useEffect(() => {
     checkURL();
   });
 
-  console.log(fetchedComidas);
   return (
     <>
       <input
