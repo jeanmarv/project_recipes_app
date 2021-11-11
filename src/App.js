@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import MadeRecipes from './pages/MadeRecipes';
 import DrinksPage from './pages/DrinksPage';
+import DrinkProvider from './context/DrinkProvider';
 import ExplorePage from './pages/ExplorePage';
 import ExploreDrinks from './pages/ExploreDrinks';
 import ExploreFood from './pages/ExploreFood';
@@ -20,26 +21,28 @@ function App() {
   return (
     <BrowserRouter>
       <RecipeProvider>
-        <Route exact path="/" component={ Login } />
-        <Route exact path="/comidas" component={ MainPage } />
-        <Route exact path="/perfil" component={ Profile } />
-        <Route exact path="/receitas-favoritas" component={ FavoriteRecipes } />
-        <Route exact path="/receitas-feitas" component={ MadeRecipes } />
-        <Route exact path="/bebidas" component={ DrinksPage } />
-        <Route exact path="/explorar" component={ ExplorePage } />
-        <Route exact path="/explorar/comidas" component={ ExploreFood } />
-        <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />
-        <Route
-          exact
-          path="/explorar/comidas/ingredientes"
-          component={ ExploreFoodIngredients }
-        />
-        <Route
-          exact
-          path="/explorar/bebidas/ingredientes"
-          component={ ExploreDrinksIngredients }
-        />
-        <Route exact path="/explorar/comidas/area" component={ ExploreFoodArea } />
+        <DrinkProvider>
+          <Route exact path="/" component={ Login } />
+          <Route exact path="/comidas" component={ MainPage } />
+          <Route exact path="/perfil" component={ Profile } />
+          <Route exact path="/receitas-favoritas" component={ FavoriteRecipes } />
+          <Route exact path="/receitas-feitas" component={ MadeRecipes } />
+          <Route exact path="/bebidas" component={ DrinksPage } />
+          <Route exact path="/explorar" component={ ExplorePage } />
+          <Route exact path="/explorar/comidas" component={ ExploreFood } />
+          <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />
+          <Route
+            exact
+            path="/explorar/comidas/ingredientes"
+            component={ ExploreFoodIngredients }
+          />
+          <Route
+            exact
+            path="/explorar/bebidas/ingredientes"
+            component={ ExploreDrinksIngredients }
+          />
+          <Route exact path="/explorar/comidas/area" component={ ExploreFoodArea } />
+        </DrinkProvider>
       </RecipeProvider>
     </BrowserRouter>
   );

@@ -9,7 +9,7 @@ export default function CategoryButtons() {
   const { pathname } = useLocation();
   const url = pathname.split('/')[1];
   const [category, setCategory] = useState([]); /* botão de categorias, 5 botões */
-  // const [dataApi, setDataApi] = useState([]); /* botão All */
+  const [dataApi, setDataApi] = useState([]); /* botão All */
   // const [toggle, setToggle] = useState(false);
   // const [nameCategory, setNameCategory] = useState(''); /* armazenar nome da categoria escolhida através do click do botão */
 
@@ -29,7 +29,8 @@ export default function CategoryButtons() {
 
   useEffect(() => {
     requestCategoryButton();
-  }, []);
+  });
+
 
   async function setButtonAllApi() {
     if (url === 'comidas') {
@@ -53,7 +54,7 @@ export default function CategoryButtons() {
   //   setNameCategory(target.id);
   // }
 
-  // console.log(dataApi);
+  console.log(dataApi);
   return (
     <div>
       <button
@@ -70,7 +71,9 @@ export default function CategoryButtons() {
           key={ strCategory }
           data-testid={ `${strCategory}-category-filter` }
           style={ { width: '25%', margin: '5px 0.5px' } }
-          // onClick={ (target) => handleClickCategory(target) } Selecionar categoria do botão
+
+        // onClick={ (target) => handleClickCategory(target) } Selecionar categoria do botão
+
         >
           {strCategory}
         </button>

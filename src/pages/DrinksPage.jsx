@@ -23,7 +23,6 @@ export default function DrinksPage() {
 
   // console.log(drinks);
   return (
-
     <div>
       <Header />
       <CategoryButtons />
