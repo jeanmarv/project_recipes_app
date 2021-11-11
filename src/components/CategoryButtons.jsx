@@ -29,7 +29,7 @@ export default function CategoryButtons() {
 
   useEffect(() => {
     requestCategoryButton();
-  }, []);
+  });
 
   async function setButtonAllApi() {
     if (url === 'comidas') {
