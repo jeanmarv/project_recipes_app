@@ -7,11 +7,8 @@ export default function DrinkProvider({ children }) {
   const [fetchedDrinks, setFetchedDrinks] = useState('');
 
   const URL = `https://www.thecocktaildb.com/api/json/v1/1/${searchDrink}`;
-  // const URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=vodka';
 
   async function fetchDrinks() {
-    console.log('passou fetchDrinks()');
-    console.log('URL é:', URL);
     try {
       const response = await fetch(URL);
       const resolve = await response.json();
