@@ -46,7 +46,7 @@ export default function SearchBar() {
 
   useEffect(() => {
     checkURL();
-  }, []);
+  });
 
   // console.log(fetchedComidas);
   return (
