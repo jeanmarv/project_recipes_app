@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 import IngredientsCard from '../components/IngredientsCard';
 
 export default function ExploreFoodIngredients() {
@@ -24,6 +26,7 @@ export default function ExploreFoodIngredients() {
 
   return (
     <>
+      <Header />
       {dataSliced.map((name, index) => (
         <IngredientsCard
           key={ index }
@@ -31,6 +34,7 @@ export default function ExploreFoodIngredients() {
           name={ name.strIngredient }
         />
       ))}
+      <Footer />
     </>
   );
 }

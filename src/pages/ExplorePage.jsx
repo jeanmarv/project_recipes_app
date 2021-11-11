@@ -1,10 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 export default function ExplorePage() {
   const history = useHistory();
   return (
     <>
+      <Header />
       <button
         onClick={ () => history.push('/explorar/comidas') }
         type="button"
@@ -19,6 +22,7 @@ export default function ExplorePage() {
       >
         Explorar Bebidas
       </button>
+      <Footer />
     </>
   );
 }
