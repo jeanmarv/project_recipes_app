@@ -16,6 +16,7 @@ import ExploreFood from './pages/ExploreFood';
 import ExploreDrinksIngredients from './pages/ExploreDrinksIngredients';
 import ExploreFoodArea from './pages/ExploreFoodArea';
 import ExploreFoodIngredients from './pages/ExploreFoodIngredients';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             component={ ExploreDrinksIngredients }
           />
           <Route exact path="/explorar/comidas/area" component={ ExploreFoodArea } />
+          <Route exact path="/explorar/bebidas/area" component={ NotFound } />
         </DrinkProvider>
       </RecipeProvider>
     </BrowserRouter>

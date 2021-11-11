@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 import IngredientsCard from '../components/IngredientsCard';
 import Header from '../components/Header';
 
@@ -32,6 +34,7 @@ export default function ExploreDrinksIngredients() {
           name={ name.strIngredient1 }
         />
       ))}
+      <Footer />
     </>
   );
 }
