@@ -1,10 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import Header from '../components/Header';
 
 export default function ExplorePage() {
   const history = useHistory();
   return (
     <>
+      <Header />
       <button
         onClick={ () => history.push('/explorar/comidas') }
         type="button"

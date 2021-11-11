@@ -52,7 +52,7 @@ export default function CategoryButtons() {
   //   }
   //   setNameCategory(target.id);
   // }
-
+  
   console.log(dataApi);
   return (
     <div>
