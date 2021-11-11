@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import IngredientsCard from '../components/IngredientsCard';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
+import IngredientsCard from '../components/IngredientsCard';
 
 export default function ExploreDrinksIngredients() {
   const [data, setData] = useState([]);
@@ -32,6 +33,7 @@ export default function ExploreDrinksIngredients() {
           name={ name.strIngredient1 }
         />
       ))}
+      <Footer />
     </>
   );
 }

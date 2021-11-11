@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 export default function ExploreDrinks() {
@@ -17,6 +18,7 @@ export default function ExploreDrinks() {
       <button data-testid="explore-surprise" type="button">
         Me Surpreenda!
       </button>
+      <Footer />
     </>
   );
 }
