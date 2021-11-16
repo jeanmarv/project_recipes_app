@@ -92,11 +92,13 @@ export default function SearchBar() {
         history.push(`/comidas/${fetchedComidas.meals[0].idMeal}`);
       }
     }
-  }
+  } // '' false ; [] true ; {}
 
   function drinksPage() {
-    if (fetchedDrinks !== 'error' || fetchedDrinks !== '') {
-      if (fetchedDrinks && fetchedDrinks.drinks.length === 1) {
+    if (fetchedDrinks.drinks) {
+      console.log('dentro do if 1111111', fetchedDrinks.drinks);
+      if (fetchedDrinks.drinks && fetchedDrinks.drinks.length === 1) {
+        console.log('dentro do if 2', fetchedDrinks.drinks);
         history.push(`/bebidas/${fetchedDrinks.drinks[0].idDrink}`);
       }
     } else { global.alert(notFound); }
@@ -107,14 +109,13 @@ export default function SearchBar() {
   }, [fetchedComidas]);
 
   useEffect(() => {
-    drinksPage();
+    if (fetchedDrinks) drinksPage();
   }, [fetchedDrinks]);
 
   async function handleClickBuscar() {
     setbtnBuscarClicked(true);
     if (title === 'Comidas') {
       await fetchComidas();
-      // foodPage();
     } else if (title === 'Bebidas') {
       if (inputValue === '') {
         global.alert(notFound);
