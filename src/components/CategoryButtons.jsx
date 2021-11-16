@@ -29,7 +29,7 @@ export default function CategoryButtons() {
 
   useEffect(() => {
     requestCategoryButton();
-  });
+  }, []); // deixar sem o array faz o código renderizar infinitamente
 
   async function setButtonAllApi() {
     if (url === 'comidas') {

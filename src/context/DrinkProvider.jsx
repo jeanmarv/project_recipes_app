@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DrinkContext from './DrinkContext';
 
 export default function DrinkProvider({ children }) {
@@ -15,9 +15,13 @@ export default function DrinkProvider({ children }) {
       setFetchedDrinks(resolve);
       return fetchedDrinks;
     } catch (error) {
+      setFetchedDrinks('error');
       return error;
     }
   }
+
+  useEffect(() => {
+  }, [fetchedDrinks]);
 
   const ContextGlobal = {
     searchDrink,
