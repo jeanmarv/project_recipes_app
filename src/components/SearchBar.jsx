@@ -1,20 +1,25 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 import DrinkContext from '../context/DrinkContext';
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
   const [radioValue, setRadioValue] = useState('ingredient');
+  const [btnBuscarClicked, setbtnBuscarClicked] = useState('false');
+  const history = useHistory();
+  const notFound = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
 
   const {
     setSearchFood,
     fetchComidas,
+    fetchedComidas,
   } = useContext(RecipeContext);
 
   const {
     setSearchDrink,
     fetchDrinks,
+    fetchedDrinks,
   } = useContext(DrinkContext);
 
   // find location (http)
@@ -32,7 +37,10 @@ export default function SearchBar() {
     }
 
     if (radioValue === 'firstLetter') {
-      if (inputValue.length > 1 && radioValue === 'firstLetter') {
+      if (inputValue.length > 1
+        && radioValue === 'firstLetter'
+        && btnBuscarClicked === true) {
+        setbtnBuscarClicked(false);
         global.alert('Sua busca deve conter somente 1 (um) caracter');
       } else {
         setSearchFood(`search.php?f=${inputValue}`);
@@ -50,7 +58,9 @@ export default function SearchBar() {
     }
 
     if (radioValue === 'firstLetter') {
-      if (inputValue.length > 1 && radioValue === 'firstLetter') {
+      if (inputValue.length > 1
+        && radioValue === 'firstLetter'
+        && btnBuscarClicked === true) {
         global.alert('Sua busca deve conter somente 1 (um) caracter');
       } else {
         setSearchDrink(`search.php?f=${inputValue}`);
@@ -68,26 +78,56 @@ export default function SearchBar() {
 
   function handleInputChange({ target }) {
     setInputValue(target.value);
-    checkURL();
   }
 
   function handleRadioChange({ target }) {
     setRadioValue(target.value);
-    checkURL();
   }
 
+  function foodPage() {
+    if (fetchedComidas) {
+      if (fetchedComidas.meals === null || fetchedComidas.meals.lenght === 0) {
+        global.alert(notFound);
+      } else if (fetchedComidas.meals.length === 1) {
+        history.push(`/comidas/${fetchedComidas.meals[0].idMeal}`);
+      }
+    }
+  } // '' false ; [] true ; {}
+
+  function drinksPage() {
+    if (fetchedDrinks.drinks) {
+      console.log('dentro do if 1111111', fetchedDrinks.drinks);
+      if (fetchedDrinks.drinks && fetchedDrinks.drinks.length === 1) {
+        console.log('dentro do if 2', fetchedDrinks.drinks);
+        history.push(`/bebidas/${fetchedDrinks.drinks[0].idDrink}`);
+      }
+    } else { global.alert(notFound); }
+  }
+
+  useEffect(() => {
+    foodPage();
+  }, [fetchedComidas]);
+
+  useEffect(() => {
+    if (fetchedDrinks) drinksPage();
+  }, [fetchedDrinks]);
+
   async function handleClickBuscar() {
-    checkURL();
+    setbtnBuscarClicked(true);
     if (title === 'Comidas') {
       await fetchComidas();
     } else if (title === 'Bebidas') {
-      await fetchDrinks();
+      if (inputValue === '') {
+        global.alert(notFound);
+      } else {
+        await fetchDrinks();
+      }
     }
   }
 
   useEffect(() => {
     checkURL();
-  });
+  }, [handleInputChange, handleRadioChange]);
 
   return (
     <>

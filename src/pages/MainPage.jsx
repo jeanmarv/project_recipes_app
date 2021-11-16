@@ -14,7 +14,7 @@ export default function MainPage() {
   const requestFoods = async () => {
     const response = await fetch(FOOD_URL);
     const resolve = await response.json();
-    console.log(resolve);
+    // console.log(resolve);
     setFoods(resolve.meals.slice(0, FOODS_NUMBER_PAGE));
   };
 
@@ -22,7 +22,7 @@ export default function MainPage() {
     requestFoods();
   }, []);
 
-  console.log(foods);
+  // console.log(foods);
   return (
 
     <div>

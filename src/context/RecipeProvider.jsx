@@ -9,7 +9,6 @@ export default function RecipeProvider({ children }) {
   const [drinkState, setDrinkState] = useState([]);
   const [foodCategory, setFoodCategory] = useState([]);
   const [drinkCategory, setDrinkCategory] = useState([]);
-  const [clickBtn, setClickBtn] = useState(true);
 
   const URL = `https://www.themealdb.com/api/json/v1/1/${searchFood}`;
 
@@ -36,9 +35,6 @@ export default function RecipeProvider({ children }) {
     setFoodCategory,
     drinkCategory,
     setDrinkCategory,
-    clickBtn,
-    setClickBtn,
-
   };
 
   return (
