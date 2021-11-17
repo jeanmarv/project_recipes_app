@@ -41,8 +41,8 @@ export default function CategoryButtons() {
   }
 
   async function handleCategoryApi(target) {
-    const FOOD_CATEGORY = `https://www.themealdb.com/api/json/v1/1/search.php?s=${target.id}`;
-    const DRINKS_CATEGORY = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${target.id}`;
+    const FOOD_CATEGORY = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${target.id}`;
+    const DRINKS_CATEGORY = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${target.id}`;
     let API = '';
 
     if (url === 'comidas') {
