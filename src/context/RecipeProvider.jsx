@@ -10,6 +10,11 @@ export default function RecipeProvider({ children }) {
   const [foodCategory, setFoodCategory] = useState([]);
   const [drinkCategory, setDrinkCategory] = useState([]);
 
+  const [data, setData] = useState([]);
+  const [recipeInProgress, setRecipeInProgress] = useState([]);
+  const [linkCopy, setlinkCopy] = useState(false);
+  const [nameCategory, setNameCategory] = useState('');
+
   const URL = `https://www.themealdb.com/api/json/v1/1/${searchFood}`;
 
   async function fetchComidas() {
@@ -35,6 +40,15 @@ export default function RecipeProvider({ children }) {
     setFoodCategory,
     drinkCategory,
     setDrinkCategory,
+
+    data,
+    setData,
+    recipeInProgress,
+    setRecipeInProgress,
+    linkCopy,
+    setlinkCopy,
+    nameCategory,
+    setNameCategory,
   };
 
   return (
