@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import { Redirect } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 import Footer from '../components/Footer';
@@ -12,7 +11,7 @@ const FOODS_NUMBER_PAGE = 12;
 const FOODS_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
 export default function MainPage() {
-  const { data, setData, fetchedComidas } = useContext(RecipeContext);
+  const { data, setData } = useContext(RecipeContext);
   const { pathname } = useLocation();
   const page = pathname.split('/')[1];
 
