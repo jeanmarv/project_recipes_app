@@ -11,6 +11,8 @@ import { apiFoodsEndDrinks } from '../services/fetchApi';
 
 const DRINKS_NUMBER_PAGE = 12;
 
+// me apague
+
 export default function DrinksPage() {
   const { data, setData } = useContext(RecipeContext);
   const { pathname } = useLocation();
