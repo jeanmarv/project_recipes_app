@@ -5,7 +5,7 @@ import RecipeContext from '../context/RecipeContext';
 import shareIcon from '../images/shareIcon.svg';
 
 export default function CopyToClipboardFunc({ recipe, index }) {
-  const { setLinkCopy } = useContext(RecipeContext);
+  const { setLinkCopied } = useContext(RecipeContext);
 
   return (
     <CopyToClipboard
@@ -19,7 +19,7 @@ export default function CopyToClipboardFunc({ recipe, index }) {
         type="button"
         src={ shareIcon }
         data-testid={ `${index}-horizontal-share-btn` }
-        onClick={ () => setLinkCopy(true) }
+        onClick={ () => setLinkCopied(true) }
       >
         <img src={ shareIcon } alt="shareIcon" />
       </button>

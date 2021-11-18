@@ -21,7 +21,7 @@ export default function RecipeProgress() {
   // console.log(clipBoard);
   const [listIngredients, setListIngredients] = useState([]); // trás os ingredientes
   const [quantity, setQuantity] = useState([]); // trás a quantidade de cada ingrediente
-  const { recipeInProgress, setRecipeInProgress, linkCopy } = useContext(RecipeContext);
+  const { recipeInProgress, setRecipeInProgress, linkCopied } = useContext(RecipeContext);
 
   useEffect(() => {
     setTypeObj(url.includes('/comidas') === true ? 'meals' : 'drinks');
@@ -116,7 +116,7 @@ export default function RecipeProgress() {
               </p>
 
               <div data-testid="share-btn">
-                { linkCopy ? global.alert('Link Copiado!') : null }
+                { linkCopied ? global.alert('Link Copiado!') : null }
                 <CopyToClipboardFunc recipe={ clipBoard } index={ index } />
               </div>
 

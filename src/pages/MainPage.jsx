@@ -29,7 +29,7 @@ export default function MainPage() {
     <div>
       <Header />
       <CategoryButtons />
-      {data !== null ? data
+      {data
         .slice(0, FOODS_NUMBER_PAGE)
         .map(({ idMeal, strMeal, strMealThumb }, index) => (
           <CardsFoodDrink
@@ -40,7 +40,7 @@ export default function MainPage() {
             key={ idMeal }
             path={ page }
           />
-        )) : null}
+        ))}
       <Footer />
     </div>
   );
