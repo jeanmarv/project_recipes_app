@@ -12,8 +12,9 @@ export default function CategoryButtons() {
   const url = pathname.split('/')[1];
   const [category, setCategory] = useState([]); /* botão de categorias, 5 botões */
   const [toggle, setToggle] = useState(false);
-  // const [nameCategory, setNameCategory] = useState(''); /* armazenar nome da categoria escolhida através do click do botão */
-  const { setData, nameCategory, setNameCategory } = useContext(RecipeContext);
+  const [nameCategory, setNameCategory] = useState(''); /* armazenar nome da categoria escolhida através do click do botão */
+  const { setData } = useContext(RecipeContext);
+  // const { setDataDrink } = useContext(DrinkContext);
 
   const categoryButton = async () => {
     if (url === 'comidas') {
@@ -42,13 +43,13 @@ export default function CategoryButtons() {
 
   async function handleCategoryApi(target) {
     const FOOD_CATEGORY = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${target.id}`;
-    const DRINKS_CATEGORY = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${target.id}`;
+    const DRINKS_CATEGORY = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${target.id}`;
     let API = '';
 
     if (url === 'comidas') {
       API = await apiFoodsEndDrinks(FOOD_CATEGORY, true);
     } else {
-      API = await apiFoodsEndDrinks(DRINKS_CATEGORY, true);
+      API = await apiFoodsEndDrinks(DRINKS_CATEGORY, false);
     }
     setData(API);
   }
@@ -62,7 +63,7 @@ export default function CategoryButtons() {
     }
     setNameCategory(target.id);
   }
-  console.log(toggle);
+  console.log(nameCategory);
   return (
     <div>
       <button

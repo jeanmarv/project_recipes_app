@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-import fetchIngredient from '../services/fetchApi';
+import fetchIngredient from '../services/fetchIngredient';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import RecipeContext from '../context/RecipeContext';
 import CopyToClipboardFunc from './CopyToClipboard';

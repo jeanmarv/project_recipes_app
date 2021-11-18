@@ -1,48 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import CategoryButtons from '../components/CategoryButtons';
+import CardsFoodDrink from '../components/CardsFoodDrink';
+import RecipeContext from '../context/RecipeContext';
+import { apiFoodsEndDrinks } from '../services/fetchApi';
 
 const DRINKS_NUMBER_PAGE = 12;
 
 export default function DrinksPage() {
-  const [drinks, setDrinks] = useState([]);
-  // console.log(foods);
+  const { data, setData } = useContext(RecipeContext);
+  const { pathname } = useLocation();
+  const page = pathname.split('/')[1];
 
-  const requestDrinks = async () => {
-    const DRINKS_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-    const response = await fetch(DRINKS_URL);
-    const resolve = await response.json();
-    // console.log(resolve);
-    setDrinks(resolve.drinks.slice(0, DRINKS_NUMBER_PAGE));
-  };
+  async function initialPageDrink() {
+    const resultDrinkApi = await apiFoodsEndDrinks('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=', false);
+    setData(resultDrinkApi);
+  }
 
   useEffect(() => {
-    requestDrinks();
+    initialPageDrink();
   }, []);
 
-  // console.log(drinks);
   return (
     <div>
       <Header />
       <CategoryButtons />
-      {/* { drinks.map((drink) => console.log(drink))} */}
-      {
-        drinks.map(({ idDrink, strDrinkThumb, strDrink }, index) => (
-          <div key={ idDrink } data-testid={ `${index}-recipe-card` }>
-            <p data-testid={ `${index}-card-name` }>{strDrink}</p>
-            <img
-              data-testid={ `${index}-card-img` }
-              src={ strDrinkThumb }
-              alt={ strDrink }
-              style={ { width: '25%',
-                margin: '20px 5px',
-                display: 'flex',
-                justifyContent: 'space-around' } }
-            />
-          </div>
-        ))
-      }
+      {data !== null ? data
+        .slice(0, DRINKS_NUMBER_PAGE)
+        .map(({ idDrink, strDrink, strDrinkThumb }, index) => (
+          <CardsFoodDrink
+            key={ idDrink }
+            src={ strDrinkThumb }
+            name={ strDrink }
+            indexID={ index }
+            id={ idDrink }
+            path={ page }
+          />
+        )) : null }
+
       <Footer />
     </div>
   );

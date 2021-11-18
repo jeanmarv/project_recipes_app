@@ -5,6 +5,7 @@ import DrinkContext from './DrinkContext';
 export default function DrinkProvider({ children }) {
   const [searchDrink, setSearchDrink] = useState('');
   const [fetchedDrinks, setFetchedDrinks] = useState('');
+  // const [dataDrink, setDataDrink] = useState([]);
 
   const URL = `https://www.thecocktaildb.com/api/json/v1/1/${searchDrink}`;
 
@@ -25,6 +26,8 @@ export default function DrinkProvider({ children }) {
     setSearchDrink,
     fetchDrinks,
     fetchedDrinks,
+    // dataDrink,
+    // setDataDrink,
   };
 
   return (
