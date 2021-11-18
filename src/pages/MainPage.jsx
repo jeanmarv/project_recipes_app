@@ -20,6 +20,8 @@ export default function MainPage() {
     setData(resultFoodApi);
   }
 
+  // me apague
+
   useEffect(() => {
     initialPageFood();
   }, []);
