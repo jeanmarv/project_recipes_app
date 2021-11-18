@@ -13,7 +13,7 @@ export default function SearchBar() {
   const {
     setSearchFood,
     fetchComidas,
-    fetchedComidas,
+    fetchedFoods,
   } = useContext(RecipeContext);
 
   const {
@@ -85,20 +85,18 @@ export default function SearchBar() {
   }
 
   function foodPage() {
-    if (fetchedComidas) {
-      if (fetchedComidas.meals === null || fetchedComidas.meals.lenght === 0) {
+    if (fetchedFoods) {
+      if (fetchedFoods.meals === null || fetchedFoods.meals.lenght === 0) {
         global.alert(notFound);
-      } else if (fetchedComidas.meals.length === 1) {
-        history.push(`/comidas/${fetchedComidas.meals[0].idMeal}`);
+      } else if (fetchedFoods.meals.length === 1) {
+        history.push(`/comidas/${fetchedFoods.meals[0].idMeal}`);
       }
     }
   } // '' false ; [] true ; {}
 
   function drinksPage() {
     if (fetchedDrinks.drinks) {
-      console.log('dentro do if 1111111', fetchedDrinks.drinks);
       if (fetchedDrinks.drinks && fetchedDrinks.drinks.length === 1) {
-        console.log('dentro do if 2', fetchedDrinks.drinks);
         history.push(`/bebidas/${fetchedDrinks.drinks[0].idDrink}`);
       }
     } else { global.alert(notFound); }
@@ -106,7 +104,7 @@ export default function SearchBar() {
 
   useEffect(() => {
     foodPage();
-  }, [fetchedComidas]);
+  }, [fetchedFoods]);
 
   useEffect(() => {
     if (fetchedDrinks) drinksPage();

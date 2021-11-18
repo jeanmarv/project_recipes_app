@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import CategoryButtons from '../components/CategoryButtons';
+import DrinkContext from '../context/DrinkContext';
+import CardSearch from '../components/CardSearch';
 
 const DRINKS_NUMBER_PAGE = 12;
 
@@ -21,28 +23,37 @@ export default function DrinksPage() {
     requestDrinks();
   }, []);
 
+  const {
+    fetchedDrinks,
+  } = useContext(DrinkContext);
+
+  function mapDefaultDrinks() {
+    return (
+      drinks.map(({ idDrink, strDrinkThumb, strDrink }, index) => (
+        <div key={ idDrink } data-testid={ `${index}-recipe-card` }>
+          <p data-testid={ `${index}-card-name` }>{ strDrink }</p>
+          <img
+            data-testid={ `${index}-card-img` }
+            src={ strDrinkThumb }
+            alt={ strDrink }
+            style={ {
+              width: '25%',
+              margin: '20px 5px',
+              display: 'flex',
+              justifyContent: 'space-around' } }
+          />
+        </div>
+      ))
+    );
+  }
+
   // console.log(drinks);
   return (
     <div>
       <Header />
       <CategoryButtons />
       {/* { drinks.map((drink) => console.log(drink))} */}
-      {
-        drinks.map(({ idDrink, strDrinkThumb, strDrink }, index) => (
-          <div key={ idDrink } data-testid={ `${index}-recipe-card` }>
-            <p data-testid={ `${index}-card-name` }>{strDrink}</p>
-            <img
-              data-testid={ `${index}-card-img` }
-              src={ strDrinkThumb }
-              alt={ strDrink }
-              style={ { width: '25%',
-                margin: '20px 5px',
-                display: 'flex',
-                justifyContent: 'space-around' } }
-            />
-          </div>
-        ))
-      }
+      { fetchedDrinks.drinks ? <CardSearch /> : mapDefaultDrinks() }
       <Footer />
     </div>
   );
