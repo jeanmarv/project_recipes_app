@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import CategoryButtons from '../components/CategoryButtons';
+import CardSearch from '../components/CardSearch';
 import CardsFoodDrink from '../components/CardsFoodDrink';
 import { apiFoodsEndDrinks } from '../services/fetchApi';
 
@@ -24,12 +25,13 @@ export default function MainPage() {
     initialPageFood();
   }, []);
 
-  return (
+  const {
+    fetchedFoods,
+  } = useContext(RecipeContext);
 
-    <div>
-      <Header />
-      <CategoryButtons />
-      {data
+  function mapDefaultFoods() {
+    return (
+      data
         .slice(0, FOODS_NUMBER_PAGE)
         .map(({ idMeal, strMeal, strMealThumb }, index) => (
           <CardsFoodDrink
@@ -40,7 +42,16 @@ export default function MainPage() {
             key={ idMeal }
             path={ page }
           />
-        ))}
+        ))
+    );
+  }
+
+  return (
+
+    <div>
+      <Header />
+      <CategoryButtons />
+      { fetchedFoods.meals ? <CardSearch /> : mapDefaultFoods() }
       <Footer />
     </div>
   );
