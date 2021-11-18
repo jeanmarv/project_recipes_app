@@ -10,26 +10,24 @@ export default function CategoryButtons() {
   const url = pathname.split('/')[1];
   const [category, setCategory] = useState([]); /* botão de categorias, 5 botões */
   const [dataApi, setDataApi] = useState([]); /* botão All */
-  // const [toggle, setToggle] = useState(false);
-  // const [nameCategory, setNameCategory] = useState(''); /* armazenar nome da categoria escolhida através do click do botão */
+
+  console.log(dataApi);
 
   const requestCategoryButton = async () => {
     if (url === 'comidas') {
       const response = await fetch(FOOD_URL);
       const resolve = await response.json();
-      // console.log(resolve.meals);
       setCategory(resolve.meals.slice(0, NUMERO_BUTTONS));
     } else {
       const response = await fetch(DRINKS_URL);
       const resolve = await response.json();
-      // console.log(resolve.drinks);
       setCategory(resolve.drinks.slice(0, NUMERO_BUTTONS));
     }
   };
 
   useEffect(() => {
     requestCategoryButton();
-  }, []); // deixar sem o array faz o código renderizar infinitamente
+  }, []);
 
   async function setButtonAllApi() {
     if (url === 'comidas') {
@@ -43,16 +41,6 @@ export default function CategoryButtons() {
     }
   }
 
-  // async function handleClickCategory({ target }) {
-  //   setToggle(true);
-  //   if (nameCategory === target.id && toggle) {
-  //     setResultApi();
-  //   } else {
-  //     setApiByCategory(target);
-  //   }
-  //   setNameCategory(target.id);
-  // }
-  console.log(dataApi);
   return (
     <div>
       <button

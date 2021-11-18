@@ -1,27 +1,28 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import CategoryButtons from '../components/CategoryButtons';
 import CardSearch from '../components/CardSearch';
+import CardsFoodDrink from '../components/CardsFoodDrink';
+import { apiFoodsEndDrinks } from '../services/fetchApi';
 
 const FOODS_NUMBER_PAGE = 12;
+const FOODS_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
 export default function MainPage() {
-  const [foods, setFoods] = useState([]);
-  // console.log(foods);
+  const { data, setData } = useContext(RecipeContext);
+  const { pathname } = useLocation();
+  const page = pathname.split('/')[1];
 
-  const FOOD_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-
-  const requestFoods = async () => {
-    const response = await fetch(FOOD_URL);
-    const resolve = await response.json();
-    // console.log(resolve);
-    setFoods(resolve.meals.slice(0, FOODS_NUMBER_PAGE));
-  };
+  async function initialPageFood() {
+    const resultFoodApi = await apiFoodsEndDrinks(FOODS_URL, true);
+    setData(resultFoodApi);
+  }
 
   useEffect(() => {
-    requestFoods();
+    initialPageFood();
   }, []);
 
   const {
@@ -30,24 +31,21 @@ export default function MainPage() {
 
   function mapDefaultFoods() {
     return (
-      foods.map(({ idMeal, strMealThumb, strMeal }, index) => (
-        <div key={ idMeal } data-testid={ `${index}-recipe-card` }>
-          <p data-testid={ `${index}-card-name` }>{strMeal}</p>
-          <img
-            data-testid={ `${index}-card-img` }
+      data
+        .slice(0, FOODS_NUMBER_PAGE)
+        .map(({ idMeal, strMeal, strMealThumb }, index) => (
+          <CardsFoodDrink
+            indexID={ index }
+            name={ strMeal }
             src={ strMealThumb }
-            alt={ strMeal }
-            style={ { width: '25%',
-              margin: '20px 5px',
-              display: 'flex',
-              justifyContent: 'space-around' } }
+            id={ idMeal }
+            key={ idMeal }
+            path={ page }
           />
-        </div>
-      ))
+        ))
     );
   }
 
-  // console.log(foods);
   return (
 
     <div>
