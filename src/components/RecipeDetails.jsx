@@ -127,7 +127,6 @@ export default function RecipeDetails() {
           Iniciar Receita
         </button>
       </Link>
-      <Footer />
     </div>
   );
 }
