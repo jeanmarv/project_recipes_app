@@ -3,8 +3,6 @@ import { useLocation } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import CategoryButtons from '../components/CategoryButtons';
-import DrinkContext from '../context/DrinkContext';
-import CardSearch from '../components/CardSearch';
 import CardsFoodDrink from '../components/CardsFoodDrink';
 import RecipeContext from '../context/RecipeContext';
 import { apiFoodsEndDrinks } from '../services/fetchApi';
@@ -27,13 +25,11 @@ export default function DrinksPage() {
     initialPageDrink();
   }, []);
 
-  const {
-    fetchedDrinks,
-  } = useContext(DrinkContext);
-
-  function mapDefaultDrinks() {
-    return (
-      data !== null ? data
+  return (
+    <div>
+      <Header />
+      <CategoryButtons />
+      {data !== null ? data
         .slice(0, DRINKS_NUMBER_PAGE)
         .map(({ idDrink, strDrink, strDrinkThumb }, index) => (
           <CardsFoodDrink
@@ -44,15 +40,8 @@ export default function DrinksPage() {
             id={ idDrink }
             path={ page }
           />
-        )) : null
-    );
-  }
+        )) : null }
 
-  return (
-    <div>
-      <Header />
-      <CategoryButtons />
-      { fetchedDrinks.drinks ? <CardSearch /> : mapDefaultDrinks() }
       <Footer />
     </div>
   );
