@@ -23,7 +23,7 @@ export default function RecipeDetails() {
   const [urlRecipe, setUrlRecipe] = useState([]);
   const filteredIngredient = [];
   const filteredQuantity = [];
-  const [clipBoard, setClipBoard] = useState({ id: 0, type: '' });
+  const [clipBoard] = useState({ id: 0, type: '' });
   const { linkCopied } = useContext(RecipeContext);
 
   if (urlRecipe[pathKey]) {

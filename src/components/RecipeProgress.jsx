@@ -118,7 +118,11 @@ export default function RecipeProgress() {
 
               <div data-testid="share-btn">
                 { linkCopied ? 'Link Copiado!' : null }
-                <CopyToClipboardFunc recipe={ clipBoard } index={ index } inProgress="/in-progress" />
+                <CopyToClipboardFunc
+                  recipe={ clipBoard }
+                  index={ index }
+                  inProgress="/in-progress"
+                />
               </div>
 
               <button data-testid="favorite-btn" type="button">

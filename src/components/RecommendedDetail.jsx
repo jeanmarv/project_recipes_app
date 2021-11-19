@@ -36,7 +36,8 @@ export default function RecommendedDetail({ urlID, urlName }) {
                   justifyContent: 'space-around' } }
               />
               <p>
-                { urlName === 'comidas' ? `${item.strCategory} ${item.strAlcoholic}` : item.strCategory }
+                { urlName === 'comidas'
+                  ? `${item.strCategory} ${item.strAlcoholic}` : item.strCategory }
               </p>
 
               <h5
