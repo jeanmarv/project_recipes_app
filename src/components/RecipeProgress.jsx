@@ -37,6 +37,7 @@ export default function RecipeProgress() {
 
   useEffect(() => {
     fetchIngredient(urlRecipes, typeObj, setListIngredients, setQuantity);
+    setRecipeInProgress(urlRecipes[typeObj]);
   }, [typeObj, urlRecipes]);
 
   useEffect(() => {
@@ -116,8 +117,8 @@ export default function RecipeProgress() {
               </p>
 
               <div data-testid="share-btn">
-                { linkCopied ? global.alert('Link Copiado!') : null }
-                <CopyToClipboardFunc recipe={ clipBoard } index={ index } />
+                { linkCopied ? 'Link Copiado!' : null }
+                <CopyToClipboardFunc recipe={ clipBoard } index={ index } inProgress="/in-progress" />
               </div>
 
               <button data-testid="favorite-btn" type="button">

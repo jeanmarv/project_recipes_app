@@ -7,3 +7,12 @@
   bottom: 0;
   position: fixed;
 }
+
+.button-recipe {
+  display: flex;
+  justify-content: space-around;
+  width: 150px;
+  background-color: rgba(201, 201, 201, 0.883);
+  bottom: 0px;
+  position: fixed;
+}
