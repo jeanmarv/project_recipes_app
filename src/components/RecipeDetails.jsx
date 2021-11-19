@@ -5,7 +5,6 @@ import fetchRecipeID from '../services/fetchRecipeID';
 // import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 // import blackHeartIcon from '../images/blackHeartIcon.svg';
-import Header from './Header';
 import Footer from './Footer';
 import RecommendedDetail from './RecommendedDetail';
 import './Footer.css';
@@ -53,7 +52,6 @@ export default function RecipeDetails() {
 
   return (
     <div>
-      <Header />
       { urlRecipe[pathKey] && urlRecipe[pathKey].map((item, index) => (
         <div key={ index }>
           <img
