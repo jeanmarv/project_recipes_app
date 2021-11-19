@@ -5,6 +5,13 @@ import Header from '../components/Header';
 
 export default function ExploreFood() {
   const history = useHistory();
+
+  function handleClick() {
+    return fetch('https://www.themealdb.com/api/json/v1/1/random.php').then((response) => response.json())
+      .then((res) => res.meals)
+      .then((res) => history.push(`/comidas/${res[0].idMeal}`));
+  }
+
   return (
     <>
       <Header />
@@ -22,7 +29,11 @@ export default function ExploreFood() {
       >
         Por Local de Origem
       </button>
-      <button data-testid="explore-surprise" type="button">
+      <button
+        data-testid="explore-surprise"
+        type="button"
+        onClick={ handleClick }
+      >
         Me Surpreenda!
       </button>
       <Footer />
