@@ -14,6 +14,7 @@ export default function DrinkProvider({ children }) {
       const response = await fetch(URL);
       const resolve = await response.json();
       setFetchedDrinks(resolve);
+      // console.log(resolve);
     } catch (error) {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
       return error;

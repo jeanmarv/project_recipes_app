@@ -4,7 +4,7 @@ import RecipeContext from './RecipeContext';
 
 export default function RecipeProvider({ children }) {
   const [searchFood, setSearchFood] = useState('');
-  const [fetchedFoods, setfetchedFoods] = useState('');
+  const [fetchedComidas, setFetchedComidas] = useState('');
 
   const [drinkState, setDrinkState] = useState([]);
   const [foodCategory, setFoodCategory] = useState([]);
@@ -25,7 +25,8 @@ export default function RecipeProvider({ children }) {
     try {
       const response = await fetch(URL);
       const resolve = await response.json();
-      setfetchedFoods(resolve);
+      setFetchedComidas(resolve);
+      return fetchedComidas;
     } catch (error) {
       return error;
     }
@@ -35,7 +36,7 @@ export default function RecipeProvider({ children }) {
     searchFood,
     setSearchFood,
     fetchComidas,
-    fetchedFoods,
+    fetchedComidas,
 
     drinkState,
     setDrinkState,
