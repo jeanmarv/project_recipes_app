@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 import shareIcon from '../images/shareIcon.svg';
 
-export default function CopyToClipboardFunc({ recipe, index }) {
+export default function ClipboardProgress({ recipe, index, inProgress }) {
   const { setLinkCopied } = useContext(RecipeContext);
 
   return (
     <CopyToClipboard
       text={
         recipe.type === 'Meal'
-          ? `http://localhost:3000/comidas/${recipe.id}`
-          : `http://localhost:3000/bebidas/${recipe.id}`
+          ? `http://localhost:3000/comidas/${recipe.id}${inProgress}`
+          : `http://localhost:3000/bebidas/${recipe.id}${inProgress}`
       }
     >
       <button
@@ -27,7 +27,7 @@ export default function CopyToClipboardFunc({ recipe, index }) {
   );
 }
 
-CopyToClipboardFunc.propTypes = ({
+ClipboardProgress.propTypes = ({
   recipe: PropTypes.shape({
     index: PropTypes.number,
     id: PropTypes.number,
