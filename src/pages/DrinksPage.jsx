@@ -6,6 +6,8 @@ import CategoryButtons from '../components/CategoryButtons';
 import CardsFoodDrink from '../components/CardsFoodDrink';
 import RecipeContext from '../context/RecipeContext';
 import { apiFoodsEndDrinks } from '../services/fetchApi';
+import CardSearch from '../components/CardSearch';
+import DrinkContext from '../context/DrinkContext';
 
 const DRINKS_NUMBER_PAGE = 12;
 
@@ -25,11 +27,13 @@ export default function DrinksPage() {
     initialPageDrink();
   }, []);
 
-  return (
-    <div>
-      <Header />
-      <CategoryButtons />
-      {data !== null ? data
+  const {
+    fetchedDrinks,
+  } = useContext(DrinkContext);
+
+  function mapDefaultDrinks() {
+    return (
+      data !== null ? data
         .slice(0, DRINKS_NUMBER_PAGE)
         .map(({ idDrink, strDrink, strDrinkThumb }, index) => (
           <CardsFoodDrink
@@ -40,8 +44,15 @@ export default function DrinksPage() {
             id={ idDrink }
             path={ page }
           />
-        )) : null }
+        )) : null
+    );
+  }
 
+  return (
+    <div>
+      <Header />
+      <CategoryButtons />
+      { fetchedDrinks.drinks ? <CardSearch /> : mapDefaultDrinks() }
       <Footer />
     </div>
   );

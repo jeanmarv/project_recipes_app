@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import CategoryButtons from '../components/CategoryButtons';
 import CardsFoodDrink from '../components/CardsFoodDrink';
 import { apiFoodsEndDrinks } from '../services/fetchApi';
+import CardSearch from '../components/CardSearch';
 
 const FOODS_NUMBER_PAGE = 12;
 const FOODS_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
@@ -24,12 +25,13 @@ export default function MainPage() {
     initialPageFood();
   }, []);
 
-  return (
+  const {
+    fetchedComidas,
+  } = useContext(RecipeContext);
 
-    <div>
-      <Header />
-      <CategoryButtons />
-      {data
+  function mapDefaultFoods() {
+    return (
+      data
         .slice(0, FOODS_NUMBER_PAGE)
         .map(({ idMeal, strMeal, strMealThumb }, index) => (
           <CardsFoodDrink
@@ -40,7 +42,16 @@ export default function MainPage() {
             key={ idMeal }
             path={ page }
           />
-        ))}
+        ))
+    );
+  }
+
+  return (
+
+    <div>
+      <Header />
+      <CategoryButtons />
+      { fetchedComidas.meals ? <CardSearch /> : mapDefaultFoods() }
       <Footer />
     </div>
   );
