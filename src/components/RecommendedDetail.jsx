@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
 import RecipeContext from '../context/RecipeContext';
 import fetchRecipeRecomendation from '../services/fetchRecipeRecomendation';
+import './Details.css';
 
 export default function RecommendedDetail({ urlID, urlName }) {
   // console.log(urlName);
@@ -21,7 +22,7 @@ export default function RecommendedDetail({ urlID, urlName }) {
   // console.log(key);
   // console.log(recomendation[key]);
   return (
-    <div>
+    <div className="items">
       { recomendation[key] !== undefined ? recomendation[key].slice(0, NUM_MAX_CARDS)
         .map((item, index) => (
           <div key={ index } data-testid={ `${index}-recomendation-card` }>
@@ -30,10 +31,6 @@ export default function RecommendedDetail({ urlID, urlName }) {
                 data-testid="recipe-photo"
                 alt="foto"
                 src={ urlName === 'bebidas' ? item.strMealThumb : item.strDrinkThumb }
-                style={ { width: '20%',
-                  margin: '20px 5px',
-                  display: 'flex',
-                  justifyContent: 'space-around' } }
               />
               <p>
                 { urlName === 'comidas'
