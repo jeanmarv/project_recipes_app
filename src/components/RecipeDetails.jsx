@@ -4,18 +4,16 @@ import { Link } from 'react-router-dom';
 import fetchRecipeID from '../services/fetchRecipeID';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import RecommendedDetail from './RecommendedDetail';
-import './Footer.css';
 import RecipeContext from '../context/RecipeContext';
 import CopyToClipboardFunc from './CopyToClipboard';
 // https://www.npmjs.com/package/react-copy-to-clipboard
+import './Details.css';
 
 export default function RecipeDetails() {
   const { pathname } = useLocation();
   const urlID = pathname.split('/')[2];
   const urlName = pathname.split('/')[1];
-
   const [pathKey, setPathKey] = useState('');
-  // const [recipeStatus] = useState(false);
   const [urlRecipe, setUrlRecipe] = useState([]);
   const filteredIngredient = [];
   const filteredQuantity = [];
@@ -87,18 +85,13 @@ export default function RecipeDetails() {
             <h5 data-testid="recipe-category">{ item.strCategory }</h5>
             <h4>Ingredients</h4>
             <ul>
-              {
-                filteredIngredient
-                  .map((ingredient, i) => (
-                    ingredient !== '' ? (
-                      <li
-                        key={ i }
-                        data-testid={ `${i}-ingredient-name-and-measure` }
-                      >
-                        { ingredient }
-                        { filteredQuantity[i] }
-                      </li>) : ''))
-              }
+              {filteredIngredient
+                .map((ingredient, i) => (
+                  ingredient !== '' ? (
+                    <li key={ i } data-testid={ `${i}-ingredient-name-and-measure` }>
+                      { ingredient }
+                      { filteredQuantity[i] }
+                    </li>) : ''))}
             </ul>
           </div>
 
@@ -117,7 +110,7 @@ export default function RecipeDetails() {
       ))}
       <Link to={ `/${urlName}/${urlID}/in-progress` }>
         <button
-          className="button-recipe"
+          className="button-onn"
           type="button"
           data-testid="start-recipe-btn"
         >
