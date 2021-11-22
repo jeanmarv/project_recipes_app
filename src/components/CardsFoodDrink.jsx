@@ -11,10 +11,6 @@ export default function CardFoodDrinks({ path, name, src, indexID, id }) {
           data-testid={ `${indexID}-card-img` }
           alt={ name }
           src={ src }
-          style={ { width: '25%',
-            margin: '20px 5px',
-            display: 'flex',
-            justifyContent: 'space-around' } }
         />
         <h4 data-testid={ `${indexID}-card-name` }>{ name }</h4>
       </div>
