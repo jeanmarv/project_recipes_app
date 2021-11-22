@@ -48,17 +48,20 @@ export default function RecipeProgress() {
       }
 
       if (urlRecipes[typeObj]) {
+        console.log(urlRecipes[typeObj]);
         urlRecipes[typeObj]
           .map(({ strMealThumb,
             strDrinkThumb,
             strCategory,
             strMeal, strDrink,
             strAlcoholic,
+            idDrink,
+            idMeal,
             strTags,
             strArea }) => setRecipeInProgress([...recipeDone,
             {
-              id: 'doneRecipes',
-              idMeal: 'doneRecipes',
+              idDrink,
+              idMeal,
               strMealThumb,
               strDrinkThumb,
               strCategory,
