@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import fetchRecipeID from '../services/fetchRecipeID';
 // import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import FavoriteHeart from './FavoriteHeart';
 import RecommendedDetail from './RecommendedDetail';
-import RecipeContext from '../context/RecipeContext';
+// import RecipeContext from '../context/RecipeContext';
 import CopyToClipboardFunc from './CopyToClipboard';
 // https://www.npmjs.com/package/react-copy-to-clipboard
 import './Details.css';
@@ -19,7 +19,7 @@ export default function RecipeDetails() {
   const filteredIngredient = [];
   const filteredQuantity = [];
   const [clipBoard] = useState({ id: 0, type: '' });
-  const { linkCopied } = useContext(RecipeContext);
+  // const { linkCopied } = useContext(RecipeContext);
   const [recipeButton] = useState(false);
 
   if (urlRecipe[pathKey]) {
@@ -55,10 +55,6 @@ export default function RecipeDetails() {
             data-testid="recipe-photo"
             alt="imagem da receita"
             src={ urlName === 'comidas' ? item.strMealThumb : item.strDrinkThumb }
-            style={ { width: '10%',
-              margin: '20px 5px',
-              display: 'flex',
-              justifyContent: 'space-around' } }
           />
           <h1
             data-testid="recipe-title"
@@ -72,12 +68,11 @@ export default function RecipeDetails() {
 
           {/* falta corrigir lógica, não está copiando link correto */}
           <div data-testid="share-btn">
-            { linkCopied ? 'Link Copiado!' : null }
+            {/* { linkCopied ? 'Link Copiado!' : null } */}
             <CopyToClipboardFunc recipe={ clipBoard } index={ index } />
           </div>
 
-          { urlName === 'bebidas' ? <FavoriteHeart /> : <FavoriteHeart />}
-          {/* <FavoriteHeart /> */}
+          <FavoriteHeart />
 
           <div>
             <h5 data-testid="recipe-category">{ item.strCategory }</h5>
@@ -112,7 +107,7 @@ export default function RecipeDetails() {
           type="button"
           data-testid="start-recipe-btn"
         >
-           { recipeButton === true ? 'Iniciar Receita' : 'Continuar Receita'}
+          { recipeButton === true ? 'Iniciar Receita' : 'Continuar Receita'}
         </button>
       </Link>
     </div>

@@ -51,9 +51,9 @@ export default function RecipeProgress() {
         urlRecipes[typeObj]
           .map(({ idMeal }) => setRecipeInProgress([...recipeDone,
             // Modificar obj e chaves pra salvar no local storage
-              {
-                id: idMeal,
-            }
+            {
+              id: idMeal,
+            },
           ]));
       }
     };
@@ -62,7 +62,7 @@ export default function RecipeProgress() {
   }, [urlRecipes, setRecipeInProgress]);
 
   const [countChecked, setCountChecked] = useState(0);
-  function counterChecked({target}) {
+  function counterChecked({ target }) {
     return target.checked ? setCountChecked(countChecked + 1) : setCountChecked(countChecked - 1);
   }
 
@@ -74,14 +74,17 @@ export default function RecipeProgress() {
             <div key={ index }>
               <img
                 data-testid="recipe-photo"
-                src={ URL_PAGE_NAME === 'comidas' ? item.strMealThumb : item.strDrinkThumb }
+                src={ URL_PAGE_NAME === 'comidas'
+                  ? item.strMealThumb : item.strDrinkThumb }
                 alt="foto da receita"
               />
               <h2 data-testid="recipe-title">
                 { URL_PAGE_NAME === 'comidas' ? item.strMeal : item.strDrink }
               </h2>
               <p data-testid="recipe-category">
-                { URL_PAGE_NAME === 'comidas' ? item.strCategory : `${item.strCategory} - ${item.strAlcoholic}`}
+                { URL_PAGE_NAME === 'comidas'
+                  ? item.strCategory
+                  : `${item.strCategory} - ${item.strAlcoholic}`}
               </p>
 
               <div data-testid="share-btn">
@@ -92,7 +95,7 @@ export default function RecipeProgress() {
                   inProgress="/in-progress"
                 />
               </div>
-              
+
               <FavoriteHeart />
 
               <div>
@@ -103,7 +106,6 @@ export default function RecipeProgress() {
                       <li data-testid={ `${i}-ingredient-step` } key={ i }>
                         <input
                           onClick={ counterChecked }
-
                           value={ ingredient }
                           type="checkbox"
                         />

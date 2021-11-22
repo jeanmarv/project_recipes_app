@@ -5,7 +5,6 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 export default function FavoriteHeart() {
   const { favoriteHeart, setFavoriteHeart } = useContext(RecipeContext);
-
   async function handleClickFavorite() {
     if (favoriteHeart === true) {
       setFavoriteHeart(false);
@@ -13,24 +12,16 @@ export default function FavoriteHeart() {
       setFavoriteHeart(true);
     }
   }
-
   return (
-    <div>
-      { favoriteHeart === true ? (
-        <img
-          data-testid="favorite-btn"
-          type="button"
-          onClick={ () => handleClickFavorite() }
-          src={ blackHeartIcon }
-          alt="favoritas" 
-        />) :
-        <img
-          data-testid="favorite-btn"
-          type="button"
-          onClick={ () => handleClickFavorite() }
-          src={ whiteHeartIcon }
-          alt="favoritas"  
-        /> }
-    </div>
+    <button
+      data-testid="favorite-btn"
+      type="button"
+      onClick={ () => handleClickFavorite() }
+    >
+      <img
+        src={ favoriteHeart === true ? blackHeartIcon : whiteHeartIcon }
+        alt="favoritas"
+      />
+    </button>
   );
 }
