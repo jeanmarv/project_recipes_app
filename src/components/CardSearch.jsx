@@ -38,11 +38,11 @@ export default function CardSearch() {
             key={ food.id }
             data-testid={ `${index}-recipe-card` }
           >
-            <span
-              data-testid={ `${index}-card-name` }
-            >
+
+            <span data-testid={ `${index}-card-name` }>
               { food.strMeal }
             </span>
+
             <img
               data-testid={ `${index}-card-img` }
               alt={ food.strMeal }
