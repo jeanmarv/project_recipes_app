@@ -18,6 +18,7 @@ export default function RecipeProvider({ children }) {
   // state page details
   const [key, setKey] = useState('');
   const [recomendation, setRecomendation] = useState([]);
+  const [favoriteHeart, setFavoriteHeart] = useState(false);
 
   const URL = `https://www.themealdb.com/api/json/v1/1/${searchFood}`;
 
@@ -57,6 +58,9 @@ export default function RecipeProvider({ children }) {
     setKey,
     recomendation,
     setRecomendation,
+
+    favoriteHeart,
+    setFavoriteHeart,
   };
 
   return (

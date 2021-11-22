@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import fetchIngredient from '../services/fetchIngredient';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import FavoriteHeart from './FavoriteHeart';
 import RecipeContext from '../context/RecipeContext';
 import CopyToClipboardFunc from './CopyToClipboard';
 // https://www.npmjs.com/package/react-copy-to-clipboard
@@ -49,27 +49,11 @@ export default function RecipeProgress() {
 
       if (urlRecipes[typeObj]) {
         urlRecipes[typeObj]
-          .map(({ strMealThumb,
-            strDrinkThumb,
-            strCategory,
-            strMeal, strDrink,
-            strAlcoholic,
-            strTags,
-            strArea }) => setRecipeInProgress([...recipeDone,
-            {
-              id: 'doneRecipes',
-              idMeal: 'doneRecipes',
-              strMealThumb,
-              strDrinkThumb,
-              strCategory,
-              strMeal,
-              strDrink,
-              strAlcoholic,
-              strTags,
-              strArea,
-              date: '23/06/2020',
-              type: clipBoard.type,
-            },
+          .map(({ idMeal }) => setRecipeInProgress([...recipeDone,
+            // Modificar obj e chaves pra salvar no local storage
+              {
+                id: idMeal,
+            }
           ]));
       }
     };
@@ -77,14 +61,10 @@ export default function RecipeProgress() {
     setInProgress();
   }, [urlRecipes, setRecipeInProgress]);
 
-  const [checked, setChecked] = useState(false);
-  // console.log(checked);
-  const onCheck = ({ target }) => {
-    if (target.checked) {
-      setChecked(false);
-    }
-    setChecked(true);
-  };
+  const [countChecked, setCountChecked] = useState(0);
+  function counterChecked({target}) {
+    return target.checked ? setCountChecked(countChecked + 1) : setCountChecked(countChecked - 1);
+  }
 
   return (
     <div>
@@ -94,26 +74,14 @@ export default function RecipeProgress() {
             <div key={ index }>
               <img
                 data-testid="recipe-photo"
-                src={
-                  URL_PAGE_NAME === 'comidas'
-                    ? item.strMealThumb
-                    : item.strDrinkThumb
-                }
+                src={ URL_PAGE_NAME === 'comidas' ? item.strMealThumb : item.strDrinkThumb }
                 alt="foto da receita"
               />
               <h2 data-testid="recipe-title">
-                {
-                  URL_PAGE_NAME === 'comidas'
-                    ? item.strMeal
-                    : item.strDrink
-                }
+                { URL_PAGE_NAME === 'comidas' ? item.strMeal : item.strDrink }
               </h2>
               <p data-testid="recipe-category">
-                {
-                  URL_PAGE_NAME === 'comidas'
-                    ? item.strCategory
-                    : `${item.strCategory} - ${item.strAlcoholic}`
-                }
+                { URL_PAGE_NAME === 'comidas' ? item.strCategory : `${item.strCategory} - ${item.strAlcoholic}`}
               </p>
 
               <div data-testid="share-btn">
@@ -124,10 +92,8 @@ export default function RecipeProgress() {
                   inProgress="/in-progress"
                 />
               </div>
-
-              <button data-testid="favorite-btn" type="button">
-                <img src={ whiteHeartIcon } alt="favoritas" />
-              </button>
+              
+              <FavoriteHeart />
 
               <div>
                 <h3>Ingredients</h3>
@@ -136,9 +102,9 @@ export default function RecipeProgress() {
                     listIngredients.map((ingredient, i) => (
                       <li data-testid={ `${i}-ingredient-step` } key={ i }>
                         <input
-                          onClick={ onCheck }
+                          onClick={ counterChecked }
+
                           value={ ingredient }
-                          checked={ checked }
                           type="checkbox"
                         />
                         <span>
@@ -155,8 +121,9 @@ export default function RecipeProgress() {
               <h3>Instructions</h3>
               <p data-testid="instructions">{ item.strInstructions }</p>
               <Link to="/receitas-feitas">
+
                 <button
-                  disabled={ !checked }
+                  disabled={ countChecked !== listIngredients.length }
                   type="button"
                   data-testid="finish-recipe-btn"
                   onClick={ () => {

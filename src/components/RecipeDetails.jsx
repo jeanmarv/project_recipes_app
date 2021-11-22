@@ -2,7 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import fetchRecipeID from '../services/fetchRecipeID';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import FavoriteHeart from './FavoriteHeart';
 import RecommendedDetail from './RecommendedDetail';
 import RecipeContext from '../context/RecipeContext';
 import CopyToClipboardFunc from './CopyToClipboard';
@@ -19,6 +20,7 @@ export default function RecipeDetails() {
   const filteredQuantity = [];
   const [clipBoard] = useState({ id: 0, type: '' });
   const { linkCopied } = useContext(RecipeContext);
+  const [recipeButton] = useState(false);
 
   if (urlRecipe[pathKey]) {
     const recipeArray = Object.entries(urlRecipe[pathKey][0]);
@@ -74,12 +76,8 @@ export default function RecipeDetails() {
             <CopyToClipboardFunc recipe={ clipBoard } index={ index } />
           </div>
 
-          <button
-            data-testid="favorite-btn"
-            type="button"
-          >
-            <img src={ whiteHeartIcon } alt="favoritas" />
-          </button>
+          { urlName === 'bebidas' ? <FavoriteHeart /> : <FavoriteHeart />}
+          {/* <FavoriteHeart /> */}
 
           <div>
             <h5 data-testid="recipe-category">{ item.strCategory }</h5>
@@ -114,7 +112,7 @@ export default function RecipeDetails() {
           type="button"
           data-testid="start-recipe-btn"
         >
-          Iniciar Receita
+           { recipeButton === true ? 'Iniciar Receita' : 'Continuar Receita'}
         </button>
       </Link>
     </div>
