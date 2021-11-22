@@ -63,7 +63,8 @@ export default function RecipeProgress() {
 
   const [countChecked, setCountChecked] = useState(0);
   function counterChecked({ target }) {
-    return target.checked ? setCountChecked(countChecked + 1) : setCountChecked(countChecked - 1);
+    return target.checked
+      ? setCountChecked(countChecked + 1) : setCountChecked(countChecked - 1);
   }
 
   return (
