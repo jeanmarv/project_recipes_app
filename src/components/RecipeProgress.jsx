@@ -48,11 +48,31 @@ export default function RecipeProgress() {
       }
 
       if (urlRecipes[typeObj]) {
+        console.log(urlRecipes[typeObj]);
         urlRecipes[typeObj]
-          .map(({ idMeal }) => setRecipeInProgress([...recipeDone,
-            // Modificar obj e chaves pra salvar no local storage
+          .map(({ strMealThumb,
+            strDrinkThumb,
+            strCategory,
+            strMeal, strDrink,
+            strAlcoholic,
+            idDrink,
+            idMeal,
+            strTags,
+            strArea }) => setRecipeInProgress([...recipeDone,
             {
-              id: idMeal,
+              idDrink,
+              idMeal,
+              strMealThumb,
+              strDrinkThumb,
+              strCategory,
+              strMeal,
+              strDrink,
+              strAlcoholic,
+              strTags,
+              strArea,
+              date: '23/06/2020',
+              type: clipBoard.type,
+
             },
           ]));
       }
