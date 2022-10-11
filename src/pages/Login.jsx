@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import '../css/login.css';
 
 export default function Login({ history }) {
   const [user, setUser] = useState({
@@ -36,13 +37,17 @@ export default function Login({ history }) {
   }
 
   return (
-    <form>
+    <form id="form-login">
+      <h1 id="app-name">
+        Recipes-app
+      </h1>
       <input
         onChange={ handleChange }
         type="email"
         placeholder="Email"
         name="email"
         data-testid="email-input"
+        id="email-ipt"
       />
 
       <input
@@ -51,6 +56,7 @@ export default function Login({ history }) {
         name="password"
         onChange={ handleChange }
         data-testid="password-input"
+        id="pass-ipt"
       />
 
       <button
@@ -58,6 +64,7 @@ export default function Login({ history }) {
         disabled={ btnDisabled }
         type="button"
         data-testid="login-submit-btn"
+        id="login-btn"
       >
         Entrar
       </button>

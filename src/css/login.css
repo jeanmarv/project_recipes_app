@@ -1,0 +1,95 @@
+* {
+  height: 100%;
+}
+
+body {
+  background-image: url("../images/login.jpg");
+  background-position:center;
+ }
+
+ 
+#form-login {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+input::placeholder {
+  font-family: 'cookie';
+  color: black;
+  font-size: 18px;
+}
+
+#app-name {
+  font-family: 'cookie';
+  background: white;
+  color: black;
+  height: 70px;
+}
+
+#email-ipt {
+  font-family: 'cookie';
+  background: white;
+  border: 1px solid black;
+  border-radius: 0px;
+  box-sizing: border-box;
+  color: black;
+  height: 70px;
+  margin-top: 10px;
+  width: 280px;
+  border-width: 0px;
+  font-size: 18px;
+  padding: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#email-ipt:hover {
+  background: #CCE5FF;
+  color: white;
+}
+
+#pass-ipt {
+  background: white;
+  border: 1px solid black;
+  border-radius: 0px;
+  box-sizing: border-box;
+  color: black;
+  height: 70px;
+  margin-top: 10px;
+  width: 280px;
+  border-width: 0px;
+  font-size: 18px;
+  padding: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#pass-ipt:hover {
+  background: #CCE5FF;
+  color: white;
+}
+
+#login-btn {
+  font-family: 'cookie';
+  background: white;
+  border-radius: 0px;
+  color: black;
+  font-size: 20px;
+  height: 40px;
+  margin-top: 20px;
+  width: 90px;
+  border-width: 0px;
+  font-weight: 550;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#login-btn:hover {
+  background: #CCE5FF;
+  color: white;
+}
+
+#login-btn:disabled {
+  background: rgb(221, 221, 221);
+  color: rgb(117, 117, 117);
+}
