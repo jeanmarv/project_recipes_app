@@ -1,10 +1,11 @@
-* {
+/* * {
   height: 100%;
-}
+} */
 
 body {
-  background-image: url("../images/login.jpg");
+  background-image: url("../images/menu2.jpg");
   background-position:center;
+  background-size:auto;
  }
 
  
@@ -14,6 +15,7 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
+  justify-content: center;
 }
 
 input::placeholder {
@@ -24,7 +26,6 @@ input::placeholder {
 
 #app-name {
   font-family: 'cookie';
-  background: white;
   color: black;
   height: 70px;
 }
