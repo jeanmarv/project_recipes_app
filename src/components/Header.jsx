@@ -3,6 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import SearchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
+import '../css/header.css';
 
 const exploreIngredients = 'Explorar Ingredientes';
 const title = (path) => {
@@ -24,20 +25,22 @@ export default function Header() {
   const [showInput, setShowInput] = useState(false);
 
   return (
-    <header>
+    <header id="header">
       <input
         type="image"
         onClick={ () => history.push('/perfil') }
         data-testid="profile-top-btn"
         src={ profileIcon }
         alt="profile-icon"
+        className="perfil-img"
       />
-      <h1 data-testid="page-title">{ title(pathname) }</h1>
+      <h1 data-testid="page-title" className="pathname">{ title(pathname) }</h1>
       { (title(pathname) === 'Comidas'
         || title(pathname) === 'Bebidas'
         || title(pathname) === 'Explorar Origem')
         ? (
           <input
+            className="search-btn"
             type="image"
             data-testid="search-top-btn"
             src={ SearchIcon }
