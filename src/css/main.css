@@ -1,0 +1,9 @@
+/* * {
+  height: 100%;
+} */
+
+body {
+  background-image: url("../images/menu2.jpg");
+  background-position:center;
+  background-size:auto;
+ }
