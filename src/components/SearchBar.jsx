@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 import DrinkContext from '../context/DrinkContext';
+import '../css/searchbar.css';
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
@@ -130,7 +131,7 @@ export default function SearchBar() {
   }, [handleInputChange, handleRadioChange]);
 
   return (
-    <>
+    <div id="search-bar">
       <input
         type="text"
         data-testid="search-input"
@@ -182,6 +183,6 @@ export default function SearchBar() {
       >
         Buscar
       </button>
-    </>
+    </div>
   );
 }
