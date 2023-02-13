@@ -140,42 +140,42 @@ export default function SearchBar() {
         value={ inputValue }
         onChange={ handleInputChange }
       />
-
-      <label htmlFor="ingredient">
-        Ingredientes
-        <input
-          type="radio"
-          id="ingredient"
-          data-testid="ingredient-search-radio"
-          onChange={ handleRadioChange }
-          value="ingredient"
-          name="radio-search"
-        />
-      </label>
-      <label htmlFor="name">
-        Nome
-        <input
-          type="radio"
-          id="name"
-          data-testid="name-search-radio"
-          value="name"
-          onChange={ handleRadioChange }
-          name="radio-search"
-        />
-      </label>
-      <label htmlFor="first-letter">
-        Primeira Letra
-        <input
-          type="radio"
-          id="first-letter"
-          firstLetter
-          data-testid="first-letter-search-radio"
-          value="firstLetter"
-          onChange={ handleRadioChange }
-          name="radio-search"
-        />
-      </label>
-
+      <div id="search-bar-radios">
+        <label htmlFor="ingredient">
+          Ingredientes
+          <input
+            type="radio"
+            id="ingredient"
+            data-testid="ingredient-search-radio"
+            onChange={ handleRadioChange }
+            value="ingredient"
+            name="radio-search"
+          />
+        </label>
+        <label htmlFor="name">
+          Nome
+          <input
+            type="radio"
+            id="name"
+            data-testid="name-search-radio"
+            value="name"
+            onChange={ handleRadioChange }
+            name="radio-search"
+          />
+        </label>
+        <label htmlFor="first-letter">
+          Primeira Letra
+          <input
+            type="radio"
+            id="first-letter"
+            firstLetter
+            data-testid="first-letter-search-radio"
+            value="firstLetter"
+            onChange={ handleRadioChange }
+            name="radio-search"
+          />
+        </label>
+      </div>
       <button
         type="button"
         data-testid="exec-search-btn"

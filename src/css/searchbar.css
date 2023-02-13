@@ -1,20 +1,31 @@
 #search-bar {
   display: flex;
-  margin: auto;
-  width: 50%;
-  height: 100%;
+  justify-content: space-around;
   align-items: center;
-  align-content: space-between;
+
 }
 
 #search-bar input {
   display: flex;
+
   /* border-radius: 8px;
   display: block;
   margin: auto;
   padding: 4px; */
 }
-/* 
+
+#search-bar-radios {
+  display: flex;
+
+  justify-content: space-evenly;
+  padding-right: 20px;
+  align-items:stretch;
+  /* border-radius: 8px;
+  display: block;
+  margin: auto;
+  padding: 4px; */
+}
+
 #search-bar label {
   display: contents;
   justify-content: space-evenly;
@@ -23,8 +34,8 @@
 }
 
 #search-bar button {
-  background-color: rgb(8, 196, 253);
-  color: black;
+  background-color: black;
+  color: white;
   display: flex;
   justify-content: space-evenly;
   margin: auto;
@@ -34,4 +45,4 @@
 #search-bar button:hover {
   background-color: rgb(1, 68, 92);
   color: white;
-} */
+}
