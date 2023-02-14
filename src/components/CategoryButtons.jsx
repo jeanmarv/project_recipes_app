@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router';
 import RecipeContext from '../context/RecipeContext';
 import { apiFoodsEndDrinks } from '../services/fetchApi';
+import '../css/categoryButton.css';
 
 const FOOD_URL = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 const DRINKS_URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
@@ -65,12 +66,12 @@ export default function CategoryButtons() {
   }
   console.log(nameCategory);
   return (
-    <div>
+    <div className="category-buttons">
       <button
         type="button"
         onClick={ handleAllApi }
         data-testid="All-category-filter"
-        style={ { width: '25%', margin: '5px 0.5px' } }
+        className="one-button"
       >
         All
       </button>
@@ -80,8 +81,8 @@ export default function CategoryButtons() {
           id={ strCategory }
           key={ strCategory }
           data-testid={ `${strCategory}-category-filter` }
-          style={ { width: '25%', margin: '5px 0.5px' } }
           onClick={ (target) => handleClickCategory(target) }
+          className="two-button"
         >
           {strCategory}
         </button>

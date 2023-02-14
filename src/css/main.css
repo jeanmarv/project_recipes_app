@@ -1,6 +1,15 @@
-body {
-  height: 100%;
-  /* background-image: url("../images/menu2.jpg");
-  background-position:center;
-  background-size:auto; */
- }
+.main-cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  background-color: green;
+}
+
+.teste-css {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: red;
+  color: green;
+}
