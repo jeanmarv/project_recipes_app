@@ -1,0 +1,39 @@
+.main-explore {
+  height: 100%;
+  width: 100%;
+}
+
+.explore-main-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 15%;
+}
+
+.explore-main-div p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 25px;
+  font-weight: 700px;
+}
+
+.explore-main-div button {
+  font-family:'Courier New', Courier, monospace;
+  margin: 20px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 450;
+  height: 70px;
+  line-height: 37px;
+  width: 250px;
+  color: black;
+  border-width: 0px;
+}
+
+.explore-main-div button:hover{
+  background-color: rgb(250, 239, 251);
+}
+

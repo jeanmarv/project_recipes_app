@@ -52,7 +52,7 @@ export default function MainPage() {
     <div>
       <Header />
       <CategoryButtons />
-      <div className="main-cards">
+      <div className="main-card-div">
         { fetchedComidas.meals ? <CardSearch /> : mapDefaultFoods() }
       </div>
       <Footer />

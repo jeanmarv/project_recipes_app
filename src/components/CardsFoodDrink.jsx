@@ -7,7 +7,7 @@ export default function CardFoodDrinks({ path, name, src, indexID, id }) {
   return (
 
     <Link to={ `${path}/${id}` }>
-      <div data-testid={ `${indexID}-recipe-card` } className="teste-css">
+      <div data-testid={ `${indexID}-recipe-card` } className="card-food-drinks">
         <img
           data-testid={ `${indexID}-card-img` }
           alt={ name }
