@@ -15,12 +15,12 @@
   background-color: red;
   color: green; */
   grid-template-rows: 100px 100px;
-  height: 210px;
+  height: 220px;
   width: 150px;
   margin: 5px;
   text-align: center;
   background-color: white;
-  border-radius: 100px;
+  border-radius: 100px 100px 0px 0px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
@@ -34,7 +34,7 @@
   height: 155px;
   width: 140px;
   margin: 5px;
-  border-radius: 100px;
+  border-radius: 100px 100px 0px 0px;
 }
 
 .card-food-drinks h4 {
@@ -43,7 +43,7 @@
   font-weight: 550;
   font-size: 18px;
   text-align: center;
-  height: 32px;
+  height: 40px;
   overflow: hidden;
   align-items: center;
   padding-right: 10px;
