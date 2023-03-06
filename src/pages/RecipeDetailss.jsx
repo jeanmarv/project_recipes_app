@@ -1,14 +1,13 @@
 import React from 'react';
-import RecipeProgress from '../components/RecipeProgress';
+import RecipeDetails from '../components/RecipeDetails';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-export default function RecipeInProgressPage() {
+export default function RecipeDetailss() {
   return (
     <>
       <Header />
-      Receita em progresso
-      <RecipeProgress />
+      <RecipeDetails />
       <Footer />
     </>
   );

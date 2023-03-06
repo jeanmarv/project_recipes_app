@@ -18,6 +18,7 @@ const title = (path) => {
   if (path === '/explorar/comidas/area') return 'Explorar Origem';
   if (path === '/explorar/comidas/ingredientes') return exploreIngredients;
   if (path === '/explorar/bebidas/ingredientes') return exploreIngredients;
+  if (path !== '/perfil/') return 'receita';
 };
 export default function Header() {
   const { pathname } = useLocation();
