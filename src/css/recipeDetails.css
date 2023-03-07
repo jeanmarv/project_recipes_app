@@ -5,17 +5,64 @@
   justify-content: center;
   width: 80%;
   padding-left: 20%;
-  padding-top: 20px;
+  padding-top: 80px;
+  padding-bottom: 400px;
+}
+
+.main-card {
+  grid-template-rows: 100px 100px;
+  height: 400px;
+  width: 300px;
+  margin: 5px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 .main-details img {
-  padding-top: 50px;
+  height: 310px;
+  width: 290px;
+  margin: 5px;
+  border-radius: 20px;
+}
+
+.main-card h1 {
+  font-size: 30px;
+  font-weight:600;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .share-like {
   display: flex;
+  justify-content:space-around;
   flex-direction: row;
-  justify-content:space-between;
+  grid-template-rows: 100px 100px;
+  margin: 5px;
+  text-align: center;
+  background-color: white;
+  overflow: hidden;
+  width: 40%;
+}
+
+.main-details h5 {
+  display: flex;
+  flex-direction: row;
+  font-size: 35px;
+}
+
+.share-like button {
+  display: flex;
+  flex-direction: row;
+  height: 65px;
+  width: 90px;
+}
+
+.share-like img {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
 }
 
 .ingredients-details {

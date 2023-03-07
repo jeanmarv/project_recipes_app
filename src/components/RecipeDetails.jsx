@@ -51,23 +51,22 @@ export default function RecipeDetails() {
     <div className="main-details">
       { urlRecipe[pathKey] && urlRecipe[pathKey].map((item, index) => (
         <div key={ index }>
-          <img
-            data-testid="recipe-photo"
-            alt="imagem da receita"
-            src={ urlName === 'comidas' ? item.strMealThumb : item.strDrinkThumb }
-          />
-          <div className="share-like">
+          <div className="main-card">
+            <img
+              data-testid="recipe-photo"
+              alt="imagem da receita"
+              src={ urlName === 'comidas' ? item.strMealThumb : item.strDrinkThumb }
+            />
             <h1
               data-testid="recipe-title"
             >
               { urlName === 'comidas' ? item.strMeal : item.strDrink }
             </h1>
-
-            <h5 data-testid="recipe-category">
-              { urlName === 'bebidas' ? `${item.strAlcoholic}` : item.strCategory}
-              dish
-            </h5>
-
+          </div>
+          <h5 data-testid="recipe-category">
+            { urlName === 'bebidas' ? `${item.strAlcoholic}` : item.strCategory}
+          </h5>
+          <div className="share-like">
             {/* falta corrigir lógica, não está copiando link correto */}
             <div data-testid="share-btn">
               {/* { linkCopied ? 'Link Copiado!' : null } */}
@@ -75,9 +74,10 @@ export default function RecipeDetails() {
             </div>
 
             <FavoriteHeart />
+            <a data-testid="video" href={ item.strYoutube }>VÍDEO</a>
           </div>
+          <h4>Ingredients</h4>
           <div className="ingredients-details">
-            <h4>Ingredients</h4>
             <ul>
               {filteredIngredient
                 .map((ingredient, i) => (
@@ -89,17 +89,13 @@ export default function RecipeDetails() {
             </ul>
           </div>
 
+          <h5>Instructions</h5>
           <div>
-            <h5>Instructions</h5>
             <p data-testid="instructions">{ item.strInstructions }</p>
-
-            <div>
-              <a data-testid="video" href={ item.strYoutube }>VÍDEO</a>
-            </div>
-
-            <h5>Recommended</h5>
-            <RecommendedDetail urlID={ urlID } urlName={ urlName } />
           </div>
+          <h5>Recommended</h5>
+          <RecommendedDetail urlID={ urlID } urlName={ urlName } />
+
         </div>
       ))}
       <Link to={ `/${urlName}/${urlID}/in-progress` }>
