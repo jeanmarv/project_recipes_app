@@ -8,7 +8,7 @@ import RecommendedDetail from './RecommendedDetail';
 // import RecipeContext from '../context/RecipeContext';
 import CopyToClipboardFunc from './CopyToClipboard';
 // https://www.npmjs.com/package/react-copy-to-clipboard
-import './Details.css';
+import '../css/recipeDetails.css';
 
 export default function RecipeDetails() {
   const { pathname } = useLocation();
@@ -48,7 +48,7 @@ export default function RecipeDetails() {
   }, []);
 
   return (
-    <div>
+    <div className="main-details">
       { urlRecipe[pathKey] && urlRecipe[pathKey].map((item, index) => (
         <div key={ index }>
           <img
@@ -56,26 +56,27 @@ export default function RecipeDetails() {
             alt="imagem da receita"
             src={ urlName === 'comidas' ? item.strMealThumb : item.strDrinkThumb }
           />
-          <h1
-            data-testid="recipe-title"
-          >
-            { urlName === 'comidas' ? item.strMeal : item.strDrink }
-          </h1>
+          <div className="share-like">
+            <h1
+              data-testid="recipe-title"
+            >
+              { urlName === 'comidas' ? item.strMeal : item.strDrink }
+            </h1>
 
-          <h5 data-testid="recipe-category">
-            { urlName === 'bebidas' ? `${item.strAlcoholic}` : item.strCategory}
-          </h5>
+            <h5 data-testid="recipe-category">
+              { urlName === 'bebidas' ? `${item.strAlcoholic}` : item.strCategory}
+              dish
+            </h5>
 
-          {/* falta corrigir lógica, não está copiando link correto */}
-          <div data-testid="share-btn">
-            {/* { linkCopied ? 'Link Copiado!' : null } */}
-            <CopyToClipboardFunc recipe={ clipBoard } index={ index } />
+            {/* falta corrigir lógica, não está copiando link correto */}
+            <div data-testid="share-btn">
+              {/* { linkCopied ? 'Link Copiado!' : null } */}
+              <CopyToClipboardFunc recipe={ clipBoard } index={ index } />
+            </div>
+
+            <FavoriteHeart />
           </div>
-
-          <FavoriteHeart />
-
-          <div>
-            <h5 data-testid="recipe-category">{ item.strCategory }</h5>
+          <div className="ingredients-details">
             <h4>Ingredients</h4>
             <ul>
               {filteredIngredient

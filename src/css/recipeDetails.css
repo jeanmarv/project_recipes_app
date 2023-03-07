@@ -1,0 +1,23 @@
+.main-details {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  padding-left: 20%;
+  padding-top: 20px;
+}
+
+.main-details img {
+  padding-top: 50px;
+}
+
+.share-like {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
+.ingredients-details {
+  display: flex;
+}
