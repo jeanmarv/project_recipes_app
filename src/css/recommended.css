@@ -1,0 +1,43 @@
+.items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.recommended-details {
+    grid-template-rows: 100px 100px;
+    height: 300px;
+    width: 150px;
+    margin: 5px;
+    text-align: center;
+    background-color: white;
+    border-radius: 100px 0px 100px 0px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.recommended-details img {
+    height: 155px;
+    width: 140px;
+    margin: 5px;
+    border-radius: 100px 0px 100px 0px;
+}
+
+.recommended-details h5 {
+    justify-content: first baseline;
+    color: black;
+    font-weight: 550;
+    font-size: 18px;
+    text-align: center;
+    height: 40px;
+    overflow: hidden;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.recommended-details p {
+
+}
+

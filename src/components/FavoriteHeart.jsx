@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import RecipeContext from '../context/RecipeContext';
 import whiteHeartIcon from '../images/whiteHeartIcon.png';
 import blackHeartIcon from '../images/blackHeartIcon.png';
+import '../css/recipeDetails.css';
 
 export default function FavoriteHeart() {
   const { favoriteHeart, setFavoriteHeart } = useContext(RecipeContext);
@@ -15,6 +16,7 @@ export default function FavoriteHeart() {
   return (
     <button
       data-testid="favorite-btn"
+      className="favorite-btn"
       type="button"
       onClick={ () => handleClickFavorite() }
     >

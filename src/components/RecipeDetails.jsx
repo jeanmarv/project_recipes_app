@@ -65,17 +65,28 @@ export default function RecipeDetails() {
                 { urlName === 'comidas' ? item.strMeal : item.strDrink }
               </h1>
             </div>
-            <div className="share-like">
-              {/* falta corrigir lógica, não está copiando link correto */}
-              <div data-testid="share-btn">
-                {/* { linkCopied ? 'Link Copiado!' : null } */}
-                <CopyToClipboardFunc recipe={ clipBoard } index={ index } />
-              </div>
+            <div className="social-recipe">
+              <div className="share-like">
+                {/* falta corrigir lógica, não está copiando link correto */}
+                <div data-testid="share-btn">
+                  {/* { linkCopied ? 'Link Copiado!' : null } */}
+                  <CopyToClipboardFunc recipe={ clipBoard } index={ index } />
+                </div>
 
-              <FavoriteHeart />
-              <a data-testid="video" className="" href={ item.strYoutube }>
-                <img src={ youtube } alt="Youtubeicon" />
-              </a>
+                <FavoriteHeart />
+                <a data-testid="video" className="video-btn" href={ item.strYoutube }>
+                  <img src={ youtube } alt="Youtubeicon" />
+                </a>
+              </div>
+              <Link to={ `/${urlName}/${urlID}/in-progress` }>
+                <button
+                  className="button-onn"
+                  type="button"
+                  data-testid="start-recipe-btn"
+                >
+                  { recipeButton === true ? 'Iniciar Receita' : 'Continuar Receita'}
+                </button>
+              </Link>
             </div>
           </div>
           <h4>Ingredients</h4>
@@ -97,18 +108,8 @@ export default function RecipeDetails() {
           </div>
           <h5>Recommended</h5>
           <RecommendedDetail urlID={ urlID } urlName={ urlName } />
-
         </div>
       ))}
-      <Link to={ `/${urlName}/${urlID}/in-progress` }>
-        <button
-          className="button-onn"
-          type="button"
-          data-testid="start-recipe-btn"
-        >
-          { recipeButton === true ? 'Iniciar Receita' : 'Continuar Receita'}
-        </button>
-      </Link>
     </div>
   );
 }

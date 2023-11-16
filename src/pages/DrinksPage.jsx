@@ -10,7 +10,7 @@ import CardSearch from '../components/CardSearch';
 import DrinkContext from '../context/DrinkContext';
 import '../css/main.css';
 
-const DRINKS_NUMBER_PAGE = 12;
+const DRINKS_NUMBER_PAGE = 14;
 
 // me apague
 

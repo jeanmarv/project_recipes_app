@@ -44,14 +44,18 @@
 
 .share-like {
   display: flex;
-  justify-content:space-around;
   flex-direction: row;
   grid-template-rows: 100px 100px;
   margin: 5px;
   text-align: center;
   background-color: white;
   overflow: hidden;
-  width: 40%;
+}
+
+.social-recipe {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .main-details h5 {
@@ -60,28 +64,46 @@
   font-size: 35px;
 }
 
-.share-like button, a {
+.share-btn, .favorite-btn, .video-btn {
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 53px;
   width: 70px;
   background:linear-gradient(to right, #99CCFF, #dd8deb);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  transition: background-color 0.3s ease;
+  margin-left: 15px;
 }
 
-.share-like button:hover,a:hover {
+.button-onn {
+  margin-top: 40px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #3498db;
+  color: black;
+  background: linear-gradient(to right, #e7f1fc, #daade2);
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.button-onn:hover {
+  background: linear-gradient(to right, #84bdfa, #c51de2);
+  color: #fff;
+}
+
+.share-btn:hover, .favorite-btn:hover, .video-btn:hover {
   transform: scale(1.1);
   transition: all 0.5s;
   background: linear-gradient(to right, #66b3ff, #d362e7);
+  border-radius: 50px;
 }
 
-.share-like button:active,a:active {
+.share-btn:active, .favorite-btn:active, .video-btn:active {
   background: linear-gradient(to right, #007cf8, #b800d8);
 }
 
@@ -100,3 +122,6 @@
 .ingredients-details {
   display: flex;
 }
+
+
+

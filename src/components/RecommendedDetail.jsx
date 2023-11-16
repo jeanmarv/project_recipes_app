@@ -25,24 +25,21 @@ export default function RecommendedDetail({ urlID, urlName }) {
     <div className="items">
       { recomendation[key] !== undefined ? recomendation[key].slice(0, NUM_MAX_CARDS)
         .map((item, index) => (
-          <div key={ index } data-testid={ `${index}-recomendation-card` }>
-            <div>
-              <img
-                data-testid="recipe-photo"
-                alt="foto"
-                src={ urlName === 'bebidas' ? item.strMealThumb : item.strDrinkThumb }
-              />
-              <p>
-                { urlName === 'comidas'
-                  ? `${item.strCategory} ${item.strAlcoholic}` : item.strCategory }
-              </p>
-
-              <h5
-                data-testid={ `${index}-recomendation-title` }
-              >
-                { urlName === 'bebidas' ? item.strMeal : item.strDrink }
-              </h5>
-            </div>
+          <div key={ index } data-testid={ `${index}-recomendation-card` } className="recommended-details">
+            <img
+              data-testid="recipe-photo"
+              alt="foto"
+              src={ urlName === 'bebidas' ? item.strMealThumb : item.strDrinkThumb }
+            />
+            <h5
+              data-testid={ `${index}-recomendation-title` }
+            >
+              { urlName === 'bebidas' ? item.strMeal : item.strDrink }
+            </h5>
+            <p>
+              { urlName === 'comidas'
+                ? `${item.strCategory} ${item.strAlcoholic}` : item.strCategory }
+            </p>
           </div>
         )) : null }
     </div>
