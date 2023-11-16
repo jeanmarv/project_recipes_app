@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import IngredientsCard from '../components/IngredientsCard';
+import '../css/ingredient.css';
 
 export default function ExploreFoodIngredients() {
   const [data, setData] = useState([]);
@@ -27,13 +28,15 @@ export default function ExploreFoodIngredients() {
   return (
     <>
       <Header />
-      {dataSliced.map((name, index) => (
-        <IngredientsCard
-          key={ index }
-          index={ index }
-          name={ name.strIngredient }
-        />
-      ))}
+      <div className="ingredient-main-div">
+        {dataSliced.map((name, index) => (
+          <IngredientsCard
+            key={ index }
+            index={ index }
+            name={ name.strIngredient }
+          />
+        ))}
+      </div>
       <Footer />
     </>
   );

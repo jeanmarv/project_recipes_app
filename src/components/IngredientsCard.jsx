@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router';
+import '../css/ingredient.css';
 
 export default function IngredientsCard({ name, index }) {
   const history = useHistory();
@@ -13,6 +14,7 @@ export default function IngredientsCard({ name, index }) {
       onClick={ () => history.push('/comidas') }
       type="button"
       data-testid={ `${index}-ingredient-card` }
+      className="ingredient-card"
     >
       <p data-testid={ `${index}-card-name` }>{name}</p>
       <img

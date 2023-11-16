@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
 import RecipeContext from '../context/RecipeContext';
 import fetchRecipeRecomendation from '../services/fetchRecipeRecomendation';
-import './Details.css';
+import '../css/recommended.css';
 
 export default function RecommendedDetail({ urlID, urlName }) {
   // console.log(urlName);

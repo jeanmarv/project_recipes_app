@@ -81,9 +81,9 @@ export default function CardSearch() {
   }
 
   return (
-    <>
+    <div>
       { mapFoods() }
       { mapDrinks() }
-    </>
+    </div>
   );
 }

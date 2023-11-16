@@ -7,6 +7,7 @@ import CategoryButtons from '../components/CategoryButtons';
 import CardsFoodDrink from '../components/CardsFoodDrink';
 import { apiFoodsEndDrinks } from '../services/fetchApi';
 import CardSearch from '../components/CardSearch';
+import '../css/main.css';
 
 const FOODS_NUMBER_PAGE = 12;
 const FOODS_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
@@ -51,7 +52,9 @@ export default function MainPage() {
     <div>
       <Header />
       <CategoryButtons />
-      { fetchedComidas.meals ? <CardSearch /> : mapDefaultFoods() }
+      <div className="main-card-div">
+        { fetchedComidas.meals ? <CardSearch /> : mapDefaultFoods() }
+      </div>
       <Footer />
     </div>
   );

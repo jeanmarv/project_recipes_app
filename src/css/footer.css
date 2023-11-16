@@ -1,0 +1,23 @@
+.footer {
+  background-image: linear-gradient(to right, #99CCFF, #dd8deb);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 3px 3px 10px;
+  position: fixed;
+  text-align: center;
+  width: 100vw;
+}
+
+.footer input{
+  align-items: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  justify-content: space-evenly;
+  margin: auto;
+  opacity: 85%;
+  text-decoration: none;
+  width: 3%;
+}

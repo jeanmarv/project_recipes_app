@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import '../css/exploreArea.css';
 
 export default function ExploreFoodArea() {
   const TWELVE = 12;
@@ -103,8 +104,14 @@ export default function ExploreFoodArea() {
   return (
     <div>
       <Header />
-      { renderAreaSelector(areas) }
-      { renderMeals(mealsList) }
+      <div id="main-meal">
+        <div id="area-selector">
+          { renderAreaSelector(areas) }
+        </div>
+        <div id="meal-card">
+          { renderMeals(mealsList) }
+        </div>
+      </div>
       <Footer />
     </div>
   );
