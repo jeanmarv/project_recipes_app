@@ -9,6 +9,14 @@
   padding-bottom: 400px;
 }
 
+.card-share {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+
 .main-card {
   grid-template-rows: 100px 100px;
   height: 400px;
@@ -52,17 +60,41 @@
   font-size: 35px;
 }
 
-.share-like button {
+.share-like button, a {
   display: flex;
   flex-direction: row;
-  height: 65px;
-  width: 90px;
+  height: 50px;
+  width: 70px;
+  background:linear-gradient(to right, #99CCFF, #dd8deb);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.share-like button:hover,a:hover {
+  transform: scale(1.1);
+  transition: all 0.5s;
+  background: linear-gradient(to right, #66b3ff, #d362e7);
+}
+
+.share-like button:active,a:active {
+  background: linear-gradient(to right, #007cf8, #b800d8);
+}
+
+.share-like a img {
+  display: flex;
+  height: 40px;
+  width: 60px;
 }
 
 .share-like img {
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 30px;
 }
 
 .ingredients-details {

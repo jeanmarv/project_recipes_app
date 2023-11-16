@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import RecipeContext from '../context/RecipeContext';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.png';
+import blackHeartIcon from '../images/blackHeartIcon.png';
 
 export default function FavoriteHeart() {
   const { favoriteHeart, setFavoriteHeart } = useContext(RecipeContext);

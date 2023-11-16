@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
-import shareIcon from '../images/shareIcon.svg';
+import shareIcon from '../images/shareIcon.png';
 
 export default function ClipboardProgress({ recipe, index, inProgress }) {
   const { setLinkCopied } = useContext(RecipeContext);
