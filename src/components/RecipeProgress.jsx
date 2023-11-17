@@ -7,6 +7,8 @@ import RecipeContext from '../context/RecipeContext';
 import CopyToClipboardFunc from './CopyToClipboard';
 // https://www.npmjs.com/package/react-copy-to-clipboard
 import fetchRecipeID from '../services/fetchRecipeID';
+import '../css/continuarReceita.css'
+import youtube from "../images/youtube.png";
 
 export default function RecipeProgress() {
   const { pathname } = useLocation();
@@ -88,36 +90,62 @@ export default function RecipeProgress() {
   }
 
   return (
-    <div>
+    <div className="main-progress">
       {
         urlRecipes[typeObj]
           && urlRecipes[typeObj].map((item, index) => (
             <div key={ index }>
-              <img
-                data-testid="recipe-photo"
-                src={ URL_PAGE_NAME === 'comidas'
-                  ? item.strMealThumb : item.strDrinkThumb }
-                alt="foto da receita"
-              />
-              <h2 data-testid="recipe-title">
-                { URL_PAGE_NAME === 'comidas' ? item.strMeal : item.strDrink }
-              </h2>
-              <p data-testid="recipe-category">
-                { URL_PAGE_NAME === 'comidas'
-                  ? item.strCategory
-                  : `${item.strCategory} - ${item.strAlcoholic}`}
-              </p>
+              <div className="card-n-share">
+                <div className="pic-name">
+                  <img
+                    data-testid="recipe-photo"
+                    src={ URL_PAGE_NAME === 'comidas'
+                      ? item.strMealThumb : item.strDrinkThumb }
+                    alt="foto da receita"
+                  />
+                  <h2 data-testid="recipe-title">
+                    { URL_PAGE_NAME === 'comidas' ? item.strMeal : item.strDrink }
+                  </h2>
+                  <p data-testid="recipe-category">
+                    { URL_PAGE_NAME === 'comidas'
+                      ? item.strCategory
+                      : `${item.strCategory} - ${item.strAlcoholic}`}
+                  </p>
+                </div>
+                <div className="socials-finish">
+                  <div className="share-favorite">
+                    { linkCopied ? 'Link Copiado!' : null }
+                    <CopyToClipboardFunc
+                      recipe={ clipBoard }
+                      index={ index }
+                      inProgress="/in-progress"
+                    />
 
-              <div data-testid="share-btn">
-                { linkCopied ? 'Link Copiado!' : null }
-                <CopyToClipboardFunc
-                  recipe={ clipBoard }
-                  index={ index }
-                  inProgress="/in-progress"
-                />
+                    <FavoriteHeart />
+
+                    <a data-testid="videoo" className="youtube-button" href={ item.strYoutube }>
+                      <img src={ youtube } alt="Youtubeicon" />
+                    </a>
+                  </div>
+
+                  <Link to="/receitas-feitas">
+                    <button
+                      className="finish-buttom"
+                      disabled={ countChecked !== listIngredients.length }
+                      type="button"
+                      data-testid="finish-recipe-btn"
+                      onClick={ () => {
+                        localStorage.setItem(
+                          'doneRecipes',
+                          JSON.stringify(recipeInProgress),
+                        );
+                      } }
+                    >
+                      Finalizar receita
+                    </button>
+                  </Link>
+                </div>
               </div>
-
-              <FavoriteHeart />
 
               <div>
                 <h3>Ingredients</h3>
@@ -143,22 +171,6 @@ export default function RecipeProgress() {
 
               <h3>Instructions</h3>
               <p data-testid="instructions">{ item.strInstructions }</p>
-              <Link to="/receitas-feitas">
-
-                <button
-                  disabled={ countChecked !== listIngredients.length }
-                  type="button"
-                  data-testid="finish-recipe-btn"
-                  onClick={ () => {
-                    localStorage.setItem(
-                      'doneRecipes',
-                      JSON.stringify(recipeInProgress),
-                    );
-                  } }
-                >
-                  Finalizar receita
-                </button>
-              </Link>
             </div>
           ))
       }

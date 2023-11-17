@@ -116,6 +116,7 @@
 .share-like img {
   display: flex;
   flex-direction: row;
+  text-align: center;
   height: 30px;
 }
 
