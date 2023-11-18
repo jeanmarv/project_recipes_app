@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import '../css/exploreArea.css';
 
 export default function ExploreFoodArea() {
@@ -103,7 +103,7 @@ export default function ExploreFoodArea() {
 
   return (
     <div>
-      <Header />
+      <Header2 />
       <div id="main-meal">
         <div id="area-selector">
           { renderAreaSelector(areas) }

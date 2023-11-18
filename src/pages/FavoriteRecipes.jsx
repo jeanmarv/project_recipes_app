@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 
 export default function FavoriteRecipe() {
   const localStorageFavorite = JSON.parse(localStorage.getItem('favoriteRecipes')) || '';
@@ -18,7 +18,7 @@ export default function FavoriteRecipe() {
   return (
     <>
       <header className="header">
-        <Header />
+        <Header2 />
       </header>
       <button
         className="btn btn-outline-dark"

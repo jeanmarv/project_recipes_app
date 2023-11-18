@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import '../css/explore.css';
 
 export default function Profile() {
@@ -10,7 +10,7 @@ export default function Profile() {
   || { email: 'email@teste.com.br' };
   return (
     <div>
-      <Header />
+      <Header2 />
       <div className="explore-main-div">
         <p data-testid="profile-email">{ emailStorage.email }</p>
         <button

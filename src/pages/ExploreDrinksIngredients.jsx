@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import IngredientsCard from '../components/IngredientsCard';
 import '../css/ingredient.css';
 
@@ -26,7 +26,7 @@ export default function ExploreDrinksIngredients() {
   }
   return (
     <>
-      <Header />
+      <Header2 />
       <div className="ingredient-main-div">
         {dataSliced.map((name, index) => (
           <IngredientsCard
