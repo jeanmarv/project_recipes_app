@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import "../css/madeRecipesCards.css";
 
 function MadeRecipeCard({ recipeData, index }) {
   const { idMeal, idDrink, strMealThumb, strArea, strCategory, strMeal,
     date, type, strAlcoholic, strDrink, strDrinkThumb } = recipeData;
+
+  function mealordrink(){
+    if (type === "Meal") {
+      return "comidas"
+    } else {
+      return "bebidas"
+    }
+  }
 
   function renderMeal() {
     return (
@@ -17,11 +26,11 @@ function MadeRecipeCard({ recipeData, index }) {
               data-testid={ `${index}-horizontal-image` }
             />
           </Link>
-          <div>
+          <div className="Texts-box">
             <p data-testid={ `${index}-horizontal-top-text` }>
               { `${strArea} - ${strCategory}` }
             </p>
-            <Link to={ `/${type}s/${idMeal}` }>
+            <Link to={ `comidas/${idMeal}` }>
               <h4 data-testid={ `${index}-horizontal-name` }>{ strMeal }</h4>
             </Link>
             <p data-testid={ `${index}-horizontal-done-date` }>
@@ -29,7 +38,6 @@ function MadeRecipeCard({ recipeData, index }) {
             </p>
           </div>
         </div>
-        ;
       </>
     );
   }
@@ -49,7 +57,7 @@ function MadeRecipeCard({ recipeData, index }) {
             <p data-testid={ `${index}-horizontal-top-text` }>
               { `${strDrink} - ${strAlcoholic}` }
             </p>
-            <Link to={ `/${type}s/${idDrink}` }>
+            <Link to={ `/bebidas/${idDrink}` }>
               <h4 data-testid={ `${index}-horizontal-name` }>{ strDrink }</h4>
             </Link>
             <p data-testid={ `${index}-horizontal-done-date` }>
