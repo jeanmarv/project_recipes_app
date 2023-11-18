@@ -1,8 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 import DrinkContext from '../context/DrinkContext';
+import "../css/searchPage.css";
 
-const NUMBER_TWELVE = 12;
+const NUMBER_TWELVE = 10;
 
 export default function CardSearch() {
   const [firstFoods, setFirstFoods] = useState([]); // antes estava firstComidas
@@ -37,18 +39,18 @@ export default function CardSearch() {
           <div
             key={ food.id }
             data-testid={ `${index}-recipe-card` }
+            className="search-card"
           >
-
-            <span data-testid={ `${index}-card-name` }>
-              { food.strMeal }
-            </span>
-
             <img
               data-testid={ `${index}-card-img` }
               alt={ food.strMeal }
               src={ food.strMealThumb }
-              style={ { width: '25%', margin: '5px 0.5px' } }
             />
+            <span data-testid={ `${index}-card-name` }>
+              { food.strMeal }
+            </span>
+
+
           </div>
         ))
       );
@@ -62,18 +64,19 @@ export default function CardSearch() {
           <div
             key={ drink.id }
             data-testid={ `${index}-recipe-card` }
+            className="search-card"
           >
+            <img
+              data-testid={ `${index}-card-img` }
+              alt={ drink.strDrink }
+              src={ drink.strDrinkThumb }
+            />
             <span
               data-testid={ `${index}-card-name` }
             >
               { drink.strDrink }
             </span>
-            <img
-              data-testid={ `${index}-card-img` }
-              alt={ drink.strDrink }
-              src={ drink.strDrinkThumb }
-              style={ { width: '25%', margin: '5px 0.5px' } }
-            />
+
           </div>
         ))
       );
@@ -81,7 +84,7 @@ export default function CardSearch() {
   }
 
   return (
-    <div>
+    <div className="main-search-box">
       { mapFoods() }
       { mapDrinks() }
     </div>
