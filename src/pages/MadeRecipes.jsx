@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import MadeRecipeCard from '../components/MadeRecipeCard';
+import "../css/madeRecipes.css";
+import Footer from '../components/Footer';
 
 export default function MadeRecipes() {
   const [madeRecipeData, setMadeRecipes] = useState([]);
@@ -12,9 +13,7 @@ export default function MadeRecipes() {
   }, []);
   return (
     <main className="done-recipes">
-      <Header>
-        Receitas Feitas
-      </Header>
+      <Header2 />
       <section className="done-recipes-section">
         {madeRecipeData.length > 0 && madeRecipeData.map((recipe, index) => (
           <MadeRecipeCard
@@ -24,6 +23,7 @@ export default function MadeRecipes() {
           />
         )) }
       </section>
+      <Footer />
     </main>
   );
 }

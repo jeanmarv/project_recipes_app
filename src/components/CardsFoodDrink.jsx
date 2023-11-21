@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../css/main.css';
 
 export default function CardFoodDrinks({ path, name, src, indexID, id }) {
   return (
 
     <Link to={ `${path}/${id}` }>
-      <div data-testid={ `${indexID}-recipe-card` }>
+      <div data-testid={ `${indexID}-recipe-card` } className="card-food-drinks">
         <img
           data-testid={ `${indexID}-card-img` }
           alt={ name }

@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
-import shareIcon from '../images/shareIcon.svg';
+import shareIcon from '../images/shareIcon.png';
+import '../css/recipeDetails.css';
 
 export default function ClipboardProgress({ recipe, index, inProgress }) {
   const { setLinkCopied } = useContext(RecipeContext);
@@ -19,6 +20,7 @@ export default function ClipboardProgress({ recipe, index, inProgress }) {
         type="button"
         src={ shareIcon }
         data-testid={ `${index}-horizontal-share-btn` }
+        className="share-btn"
         onClick={ () => setLinkCopied(true) }
       >
         <img src={ shareIcon } alt="shareIcon" />

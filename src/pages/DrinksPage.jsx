@@ -8,8 +8,9 @@ import RecipeContext from '../context/RecipeContext';
 import { apiFoodsEndDrinks } from '../services/fetchApi';
 import CardSearch from '../components/CardSearch';
 import DrinkContext from '../context/DrinkContext';
+import '../css/main.css';
 
-const DRINKS_NUMBER_PAGE = 12;
+const DRINKS_NUMBER_PAGE = 14;
 
 // me apague
 
@@ -52,7 +53,9 @@ export default function DrinksPage() {
     <div>
       <Header />
       <CategoryButtons />
-      { fetchedDrinks.drinks ? <CardSearch /> : mapDefaultDrinks() }
+      <div className="main-card-div">
+        { fetchedDrinks.drinks ? <CardSearch /> : mapDefaultDrinks() }
+      </div>
       <Footer />
     </div>
   );

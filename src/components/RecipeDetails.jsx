@@ -8,7 +8,8 @@ import RecommendedDetail from './RecommendedDetail';
 // import RecipeContext from '../context/RecipeContext';
 import CopyToClipboardFunc from './CopyToClipboard';
 // https://www.npmjs.com/package/react-copy-to-clipboard
-import './Details.css';
+import '../css/recipeDetails.css';
+import youtube from "../images/youtube.png";
 
 export default function RecipeDetails() {
   const { pathname } = useLocation();
@@ -48,35 +49,48 @@ export default function RecipeDetails() {
   }, []);
 
   return (
-    <div>
+    <div className="main-details">
       { urlRecipe[pathKey] && urlRecipe[pathKey].map((item, index) => (
         <div key={ index }>
-          <img
-            data-testid="recipe-photo"
-            alt="imagem da receita"
-            src={ urlName === 'comidas' ? item.strMealThumb : item.strDrinkThumb }
-          />
-          <h1
-            data-testid="recipe-title"
-          >
-            { urlName === 'comidas' ? item.strMeal : item.strDrink }
-          </h1>
+          <div className="card-share">
+            <div className="main-card">
+              <img
+                data-testid="recipe-photo"
+                alt="imagem da receita"
+                src={ urlName === 'comidas' ? item.strMealThumb : item.strDrinkThumb }
+              />
+              <h1
+                data-testid="recipe-title"
+              >
+                { urlName === 'comidas' ? item.strMeal : item.strDrink }
+              </h1>
+            </div>
+            <div className="social-recipe">
+              <div className="share-like">
+                {/* falta corrigir lógica, não está copiando link correto */}
+                <div data-testid="share-btn">
+                  {/* { linkCopied ? 'Link Copiado!' : null } */}
+                  <CopyToClipboardFunc recipe={ clipBoard } index={ index } />
+                </div>
 
-          <h5 data-testid="recipe-category">
-            { urlName === 'bebidas' ? `${item.strAlcoholic}` : item.strCategory}
-          </h5>
-
-          {/* falta corrigir lógica, não está copiando link correto */}
-          <div data-testid="share-btn">
-            {/* { linkCopied ? 'Link Copiado!' : null } */}
-            <CopyToClipboardFunc recipe={ clipBoard } index={ index } />
+                <FavoriteHeart />
+                <a data-testid="video" className="video-btn" href={ item.strYoutube }>
+                  <img src={ youtube } alt="Youtubeicon" />
+                </a>
+              </div>
+              <Link to={ `/${urlName}/${urlID}/in-progress` }>
+                <button
+                  className="button-onn"
+                  type="button"
+                  data-testid="start-recipe-btn"
+                >
+                  { recipeButton === true ? 'Iniciar Receita' : 'Continuar Receita'}
+                </button>
+              </Link>
+            </div>
           </div>
-
-          <FavoriteHeart />
-
-          <div>
-            <h5 data-testid="recipe-category">{ item.strCategory }</h5>
-            <h4>Ingredients</h4>
+          <h4>Ingredients</h4>
+          <div className="ingredients-details">
             <ul>
               {filteredIngredient
                 .map((ingredient, i) => (
@@ -88,28 +102,14 @@ export default function RecipeDetails() {
             </ul>
           </div>
 
+          <h5>Instructions</h5>
           <div>
-            <h5>Instructions</h5>
             <p data-testid="instructions">{ item.strInstructions }</p>
-
-            <div>
-              <a data-testid="video" href={ item.strYoutube }>VÍDEO</a>
-            </div>
-
-            <h5>Recommended</h5>
-            <RecommendedDetail urlID={ urlID } urlName={ urlName } />
           </div>
+          <h5>Recommended</h5>
+          <RecommendedDetail urlID={ urlID } urlName={ urlName } />
         </div>
       ))}
-      <Link to={ `/${urlName}/${urlID}/in-progress` }>
-        <button
-          className="button-onn"
-          type="button"
-          data-testid="start-recipe-btn"
-        >
-          { recipeButton === true ? 'Iniciar Receita' : 'Continuar Receita'}
-        </button>
-      </Link>
     </div>
   );
 }
