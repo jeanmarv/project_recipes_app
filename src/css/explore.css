@@ -1,20 +1,9 @@
-.main-explore {
-  height: 100%;
-  width: 100%;
-}
-
 .explore-main-div {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding-top: 15%;
-}
-
-.explore-main-div p {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 25px;
-  font-weight: 700px;
 }
 
 .explore-main-div button {
@@ -31,6 +20,10 @@
   width: 250px;
   color: black;
   border-width: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .explore-main-div button:hover{

@@ -32,11 +32,14 @@ export default function CardSearch() {
     }
   }, [fetchedDrinks]);
 
+  console.log("firstFoods:", firstFoods);
+  console.log("firstDrinks:", firstDrinks);
+
   function mapFoods() {
     if (firstFoods) {
       return (
         firstFoods.map((food, index) => (
-          <div
+          <Link to={ `comidas/${food.idMeal}`}
             key={ food.id }
             data-testid={ `${index}-recipe-card` }
             className="search-card"
@@ -46,12 +49,13 @@ export default function CardSearch() {
               alt={ food.strMeal }
               src={ food.strMealThumb }
             />
+            <p>este é o idmeal: {food.idMeal}</p>
             <span data-testid={ `${index}-card-name` }>
               { food.strMeal }
             </span>
 
 
-          </div>
+          </Link>
         ))
       );
     }
@@ -61,7 +65,7 @@ export default function CardSearch() {
     if (firstDrinks) {
       return (
         firstDrinks.map((drink, index) => (
-          <div
+          <Link to={ `bebidas/${drink.idDrink}`}
             key={ drink.id }
             data-testid={ `${index}-recipe-card` }
             className="search-card"
@@ -77,7 +81,7 @@ export default function CardSearch() {
               { drink.strDrink }
             </span>
 
-          </div>
+          </Link>
         ))
       );
     }

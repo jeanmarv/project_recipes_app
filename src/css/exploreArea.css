@@ -7,6 +7,32 @@ display: flex;
 justify-content: center;
 }
 
+#area-selector select {
+  appearance: none;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  background: linear-gradient(to right, rgb(255, 244, 253),rgb(224, 211, 255));
+  color: #3498db;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#area-selector select:hover {
+  border-color: rgb(0, 0, 160);
+  background: linear-gradient(to right, rgb(253, 226, 248),rgb(224, 211, 255)) ;
+}
+
+
+#area-selector option {
+  padding: 10px;
+  background-color: #eefafd;
+  color: #3498db;
+}
+
+
 #meal-card ul {
   display: flex;
   flex-wrap: wrap;
@@ -27,6 +53,10 @@ justify-content: center;
   border-radius: 100px 100px 0px 0px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
+}
+
+#meal-card li:hover {
+  background-color: rgb(250, 239, 251);
 }
 
 #meal-card img{

@@ -1,0 +1,11 @@
+.favorite-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons-box {
+    display: flex;
+    flex-direction: row;
+    margin-top: 6%;
+}

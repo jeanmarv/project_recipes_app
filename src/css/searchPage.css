@@ -20,6 +20,11 @@
     overflow: hidden;
 }
 
+.search-card:hover {
+    background-color:rgb(250, 239, 251);
+    border-color: rgb(250, 239, 251);
+}
+
 .search-card img {
     height: 155px;
     width: 140px;

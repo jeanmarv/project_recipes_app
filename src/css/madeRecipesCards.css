@@ -10,6 +10,11 @@
     overflow: hidden;
 }
 
+.done-recipe-card:hover {
+    background-color:rgb(250, 239, 251);
+    border-color: rgb(250, 239, 251);
+}
+
 .done-recipe-card img {
     height: 180px;
     width: 180px;
