@@ -50,7 +50,7 @@ export default function RecipeProgress() {
       }
 
       if (urlRecipes[typeObj]) {
-        console.log(urlRecipes[typeObj]);
+        console.log(urlRecipes[typeObj])
         urlRecipes[typeObj]
           .map(({ strMealThumb,
             strDrinkThumb,

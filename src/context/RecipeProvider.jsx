@@ -12,6 +12,7 @@ export default function RecipeProvider({ children }) {
 
   const [data, setData] = useState([]);
   const [recipeInProgress, setRecipeInProgress] = useState([]);
+  const [recipeFavorite, setrecipeFavorite] = useState([]);
   const [linkCopied, setLinkCopied] = useState(false);
   const [nameCategory, setNameCategory] = useState('');
 
@@ -50,6 +51,8 @@ export default function RecipeProvider({ children }) {
     setData,
     recipeInProgress,
     setRecipeInProgress,
+    recipeFavorite,
+    setrecipeFavorite,
     linkCopied,
     setLinkCopied,
     nameCategory,
