@@ -32,49 +32,49 @@ export default function FavoriteRecipe() {
         </button>
         <button
           className="btn btn-outline-dark"
-          name="comida"
+          name="Meal"
           type="button"
           data-testid="filter-by-food-btn"
           onClick={ handleClick }
         >
-          Food
+          Comidas
         </button>
         <button
           className="btn btn-outline-dark"
-          name="bebida"
+          name="Drink"
           type="button"
           data-testid="filter-by-drink-btn"
           onClick={ handleClick }
         >
-          Drink
+          Bebidas
         </button>
-      <p>este é localstr{localStorageFavorite.length}</p>
       </div>
+      <div className="main-cards">
+        {localStorageFavorite.length > 0 && favoriteRecipe
+          .filter((recipe) => recipe.type === filterFavorites || filterFavorites === '')
+          .map((recipe, index) => (
+            <div className="indiv-cards">
+              <Link to={  recipe.type === "Meal" ?  `/comidas/${recipe.id}`: `/bebidas/${recipe.id}` }>
+                <img
+                  width="100px"
+                  src={ recipe.strThumb }
+                  alt=""
+                  data-testid={ `${index}-horizontal-image` }
+                />
+                <h2 data-testid={ `${index}-horizontal-name` }>
+                  {recipe.str}
+                </h2>
+                <h3
+                  data-testid={ `${index}-horizontal-top-text` }
+                >
+                  {recipe.strCategory ? `${recipe.strCategory}`: ""}
+                </h3>
+              </Link>
 
-      {localStorageFavorite.length > 0 && favoriteRecipe
-        .filter((recipe) => recipe.type === filterFavorites || filterFavorites === '')
-        .map((recipe, index) => (
-          <div key={ recipe.id }>
-            <Link to={ `/${recipe.type}s/${recipe.id}` }>
-              <img
-                width="100px"
-                src={ recipe.image }
-                alt=""
-                data-testid={ `${index}-horizontal-image` }
-              />
-              <h3
-                data-testid={ `${index}-horizontal-top-text` }
-              >
-                {`${recipe.area || 'Alcoholic'} - ${recipe.category}`}
-              </h3>
-              <h2 data-testid={ `${index}-horizontal-name` }>
-                {recipe.name}
-              </h2>
-            </Link>
-
-          </div>
-          
-        ))}
+            </div>
+            
+          ))}
+      </div>
         <Footer />
     </div>
   );

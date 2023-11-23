@@ -9,3 +9,67 @@
     flex-direction: row;
     margin-top: 6%;
 }
+
+.buttons-box button {
+    margin-left: 5px;
+    margin-right: 5px;
+    background: linear-gradient(to right, #fef7ff, #d7ebff);
+}
+
+.main-cards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.indiv-cards {
+    grid-template-rows: 100px 100px;
+    height: 280px;
+    width: 200px;
+    margin: 5px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.indiv-cards:hover {
+    background-color:rgb(250, 239, 251);
+    border-color: rgb(250, 239, 251);
+}
+
+.indiv-cards img {
+    height: 180px;
+    width: 180px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.indiv-cards h2 {
+    justify-content: first baseline;
+    color: blue;
+    font-weight: 550;
+    font-size: 25px;
+    text-align: center;
+    height: 40px;
+    overflow: hidden;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.indiv-cards h3 {
+    justify-content: first baseline;
+    color: black;
+    font-weight: 550;
+    font-size: 20px;
+    text-align: center;
+    height: 40px;
+    overflow: hidden;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+}

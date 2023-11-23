@@ -9,11 +9,9 @@ import fetchRecipeID from '../services/fetchRecipeID';
 export default function FavoriteHeart() {
   const { pathname } = useLocation();
   const url = pathname;
-  const URL_PAGE_NAME = url.split('/')[1];
   const URL_RECIPE_ID = url.split('/')[2];
 
-  const { favoriteHeart, setFavoriteHeart } = useContext(RecipeContext);
-  const { fetchComidas } = useContext(RecipeContext);
+  const [ favoriteHeart, setFavoriteHeart ] = useState([false]);
   const [urlRecipes, setUrlRecipes] = useState([]);
   const [clipBoard, setClipBoard] = useState({ id: 0, type: '' });
   const [typeObj, setTypeObj] = useState('');
@@ -37,53 +35,51 @@ export default function FavoriteHeart() {
       if (localStorage.getItem('favoriteRecipes')) {
         recipeDone = JSON.parse(localStorage.getItem('favoriteRecipes'));
       }
-
-      if (urlRecipes[typeObj]) {
-        console.log(urlRecipes[typeObj])
-        urlRecipes[typeObj]
-          .map(({ strMealThumb,
-            strDrinkThumb,
-            strCategory,
-            strMeal, strDrink,
-            strAlcoholic,
-            idDrink,
-            idMeal,
-            strTags,
-            strArea }) => setrecipeFavorite([...recipeDone,
-            {
-              idDrink,
-              idMeal,
-              strMealThumb,
-              strDrinkThumb,
-              strCategory,
-              strMeal,
-              strDrink,
-              strAlcoholic,
-              strTags,
-              strArea,
-              date: '23/06/2020',
-              type: clipBoard.type,
-
-            },
-          ]));
-      }
     };
 
     setInProgress();
   }, [urlRecipes, setrecipeFavorite]);
-  
+
   async function handleClickFavorite() {
     if (favoriteHeart === true) {
+      const updatedRecipes = recipeFavorite.filter(recipe => {
+        if (recipe.id === clipBoard.id || recipe.id === clipBoard.id) {
+          return false;
+        }
+        return true;
+      });
+
       setFavoriteHeart(false);
-      localStorage.setItem( 'favoriteRecipes', JSON.stringify(recipeFavorite))
-      console.log(`upando isso para o localstorage${recipeFavorite}`)
-    } else {
+      setrecipeFavorite(updatedRecipes);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(updatedRecipes));
+    } else  {
+      setrecipeFavorite(prevState => [
+        ...prevState,
+        {
+          id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
+          // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
+          // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
+          strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
+          strCategory: urlRecipes[typeObj][0].strCategory,
+          // strMeal: urlRecipes[typeObj][0].strMeal,
+          str: urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
+          date: '2/06/2020',
+          type: clipBoard.type,
+        },
+      ]);
+      localStorage.setItem('favoriteRecipes', JSON.stringify([...recipeFavorite, {
+        id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
+        // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
+        // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
+        strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
+        strCategory: urlRecipes[typeObj][0].strArea,
+        // strMeal: urlRecipes[typeObj][0].strMeal,
+        str:urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
+        date: '2/06/2020',
+        type: clipBoard.type,
+      }]));
       setFavoriteHeart(true);
-      localStorage.setItem( 'favoriteRecipes', JSON.stringify(recipeFavorite))
-      console.log(`upando isso para o localstorage${recipeFavorite}`)
     }
-    console.log(`este é o que estou recebendo ${fetchComidas}`)
-    // console.log(`este é o que estou recebendo em fav heart${favoriteHeart}`)
   }
 
   return (
