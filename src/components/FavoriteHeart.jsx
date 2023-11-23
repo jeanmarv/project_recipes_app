@@ -81,6 +81,7 @@ export default function FavoriteHeart() {
             type: clipBoard.type,
           }]));
         }
+
       setFavoriteHeart(true);
     }
   }

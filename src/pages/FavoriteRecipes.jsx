@@ -53,7 +53,7 @@ export default function FavoriteRecipe() {
         {localStorageFavorite.length > 0 && favoriteRecipe
           .filter((recipe) => recipe.type === filterFavorites || filterFavorites === '')
           .map((recipe, index) => (
-            <div className="indiv-cards">
+            <div className="indiv-cards" key={index}>
               <Link to={  recipe.type === "Meal" ?  `/comidas/${recipe.id}`: `/bebidas/${recipe.id}` }>
                 <img
                   width="100px"
