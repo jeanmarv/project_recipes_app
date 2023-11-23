@@ -4,14 +4,11 @@ import '../css/login.css';
 
 export default function Login({ history }) {
   const [user, setUser] = useState({
-    email: "jeanproject@test.com",
-    password: "1234567",
+    email: 'jeanproject@test.com',
+    password: '1234567',
   });
 
   const [btnDisabled, setBtnDisabled] = useState(true);
-  const [isUserModified, setIsUserModified] = useState(false);
-
-  useEffect(() => {emailAndPasswordValidation()},[])
 
   function emailAndPasswordValidation() {
     const regex = /.+@.+\.[A-Za-z]+$/;
@@ -22,6 +19,8 @@ export default function Login({ history }) {
       setBtnDisabled(true);
     }
   }
+
+  useEffect(() => { emailAndPasswordValidation(); }, []);
 
   function handleChange({ target: { name, value } }) {
     setUser({
@@ -52,7 +51,7 @@ export default function Login({ history }) {
           name="email"
           data-testid="email-input"
           id="email-ipt"
-          value={user.email}
+          value={ user.email }
         />
 
         <input
@@ -62,7 +61,7 @@ export default function Login({ history }) {
           onChange={ handleChange }
           data-testid="password-input"
           id="pass-ipt"
-          value={user.password}
+          value={ user.password }
         />
 
         <button

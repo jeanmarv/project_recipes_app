@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header2 from '../components/Header2';
 import Footer from '../components/Footer';
-import "../css/favorite.css";
+import '../css/favorite.css';
 
 export default function FavoriteRecipe() {
   const localStorageFavorite = JSON.parse(localStorage.getItem('favoriteRecipes')) || '';
@@ -53,8 +53,11 @@ export default function FavoriteRecipe() {
         {localStorageFavorite.length > 0 && favoriteRecipe
           .filter((recipe) => recipe.type === filterFavorites || filterFavorites === '')
           .map((recipe, index) => (
-            <div className="indiv-cards" key={index}>
-              <Link to={  recipe.type === "Meal" ?  `/comidas/${recipe.id}`: `/bebidas/${recipe.id}` }>
+            <div className="indiv-cards" key={ index }>
+              <Link
+                to={ recipe.type === 'Meal'
+                  ? `/comidas/${recipe.id}` : `/bebidas/${recipe.id}` }
+              >
                 <img
                   width="100px"
                   src={ recipe.strThumb }
@@ -67,15 +70,15 @@ export default function FavoriteRecipe() {
                 <h3
                   data-testid={ `${index}-horizontal-top-text` }
                 >
-                  {recipe.strCategory ? `${recipe.strCategory}`: ""}
+                  {recipe.strCategory ? `${recipe.strCategory}` : ''}
                 </h3>
               </Link>
 
             </div>
-            
+
           ))}
       </div>
-        <Footer />
+      <Footer />
     </div>
   );
 }

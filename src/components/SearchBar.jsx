@@ -168,7 +168,6 @@ export default function SearchBar() {
           <input
             type="radio"
             id="first-letter"
-            firstLetter
             data-testid="first-letter-search-radio"
             value="firstLetter"
             onChange={ handleRadioChange }

@@ -7,8 +7,8 @@ import RecipeContext from '../context/RecipeContext';
 import CopyToClipboardFunc from './CopyToClipboard';
 // https://www.npmjs.com/package/react-copy-to-clipboard
 import fetchRecipeID from '../services/fetchRecipeID';
-import '../css/continuarReceita.css'
-import youtube from "../images/youtube.png";
+import '../css/continuarReceita.css';
+import youtube from '../images/youtube.png';
 
 export default function RecipeProgress() {
   const { pathname } = useLocation();
@@ -50,7 +50,7 @@ export default function RecipeProgress() {
       }
 
       if (urlRecipes[typeObj]) {
-        console.log(urlRecipes[typeObj])
+        console.log(urlRecipes[typeObj]);
         urlRecipes[typeObj]
           .map(({ strMealThumb,
             strDrinkThumb,
@@ -123,7 +123,11 @@ export default function RecipeProgress() {
 
                     <FavoriteHeart />
 
-                    <a data-testid="videoo" className="youtube-button" href={ item.strYoutube }>
+                    <a
+                      data-testid="videoo"
+                      className="youtube-button"
+                      href={ item.strYoutube }
+                    >
                       <img src={ youtube } alt="Youtubeicon" />
                     </a>
                   </div>

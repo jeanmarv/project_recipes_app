@@ -9,7 +9,7 @@ import RecommendedDetail from './RecommendedDetail';
 import CopyToClipboardFunc from './CopyToClipboard';
 // https://www.npmjs.com/package/react-copy-to-clipboard
 import '../css/recipeDetails.css';
-import youtube from "../images/youtube.png";
+import youtube from '../images/youtube.png';
 
 export default function RecipeDetails() {
   const { pathname } = useLocation();

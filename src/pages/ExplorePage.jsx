@@ -27,7 +27,7 @@ export default function ExplorePage() {
           </button>
         </div>
       </div>
-    <Footer />
+      <Footer />
     </div>
   );
 }

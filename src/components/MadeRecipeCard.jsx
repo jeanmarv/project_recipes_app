@@ -1,44 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import "../css/madeRecipesCards.css";
+import '../css/madeRecipesCards.css';
 
 function MadeRecipeCard({ recipeData, index }) {
   const { idMeal, idDrink, strMealThumb, strArea, strCategory, strMeal,
     date, type, strAlcoholic, strDrink, strDrinkThumb } = recipeData;
 
-  function mealordrink(){
-    if (type === "Meal") {
-      return "comidas"
-    } else {
-      return "bebidas"
-    }
-  }
-
   function renderMeal() {
     return (
-      <>
-        <div className="done-recipe-card">
-          <Link to={ `/comidas/${idMeal}` }>
-            <img
-              src={ strMealThumb }
-              alt="done recipe"
-              data-testid={ `${index}-horizontal-image` }
-            />
+      <div className="done-recipe-card">
+        <Link to={ `/comidas/${idMeal}` }>
+          <img
+            src={ strMealThumb }
+            alt="done recipe"
+            data-testid={ `${index}-horizontal-image` }
+          />
+        </Link>
+        <div className="Texts-box">
+          <p data-testid={ `${index}-horizontal-top-text` }>
+            { `${strArea} - ${strCategory}` }
+          </p>
+          <Link to={ `comidas/${idMeal}` }>
+            <h4 data-testid={ `${index}-horizontal-name` }>{ strMeal }</h4>
           </Link>
-          <div className="Texts-box">
-            <p data-testid={ `${index}-horizontal-top-text` }>
-              { `${strArea} - ${strCategory}` }
-            </p>
-            <Link to={ `comidas/${idMeal}` }>
-              <h4 data-testid={ `${index}-horizontal-name` }>{ strMeal }</h4>
-            </Link>
-            <p data-testid={ `${index}-horizontal-done-date` }>
-              { `Done at: ${date}` }
-            </p>
-          </div>
+          <p data-testid={ `${index}-horizontal-done-date` }>
+            { `Done at: ${date}` }
+          </p>
         </div>
-      </>
+      </div>
     );
   }
 

@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { useLocation } from 'react-router';
 import RecipeContext from '../context/RecipeContext';
 import whiteHeartIcon from '../images/whiteHeartIcon.png';
 import blackHeartIcon from '../images/blackHeartIcon.png';
-import { useLocation } from 'react-router';
 import '../css/recipeDetails.css';
 import fetchRecipeID from '../services/fetchRecipeID';
 
@@ -11,7 +11,7 @@ export default function FavoriteHeart() {
   const url = pathname;
   const URL_RECIPE_ID = url.split('/')[2];
 
-  const [ favoriteHeart, setFavoriteHeart ] = useState([false]);
+  const [favoriteHeart, setFavoriteHeart] = useState([false]);
   const [urlRecipes, setUrlRecipes] = useState([]);
   const [clipBoard, setClipBoard] = useState({ id: 0, type: '' });
   const [typeObj, setTypeObj] = useState('');
@@ -34,7 +34,7 @@ export default function FavoriteHeart() {
       let recipeDone = '';
       if (localStorage.getItem('favoriteRecipes')) {
         recipeDone = JSON.parse(localStorage.getItem('favoriteRecipes'));
-        setrecipeFavorite(recipeDone)
+        setrecipeFavorite(recipeDone);
       }
     };
 
@@ -43,8 +43,8 @@ export default function FavoriteHeart() {
 
   async function handleClickFavorite() {
     if (favoriteHeart === true) {
-      const updatedRecipes = recipeFavorite.filter(recipe => {
-        if (recipe.id === clipBoard.id || recipe.id === clipBoard.id) {
+      const updatedRecipes = recipeFavorite.filter((recipe) => {
+        if (recipe.id === clipBoard.id) {
           return false;
         }
         return true;
@@ -54,33 +54,34 @@ export default function FavoriteHeart() {
       setrecipeFavorite(updatedRecipes);
       localStorage.setItem('favoriteRecipes', JSON.stringify(updatedRecipes));
     } else {
-        if (!( recipeFavorite.some(objeto =>  Object.values(objeto).includes(clipBoard.id)) )) {
-          setrecipeFavorite(prevState => [
-            ...prevState,
-            {
-              id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
-              // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
-              // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
-              strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
-              strCategory: urlRecipes[typeObj][0].strCategory,
-              // strMeal: urlRecipes[typeObj][0].strMeal,
-              str: urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
-              date: '2/06/2020',
-              type: clipBoard.type,
-            },
-          ]);
-          localStorage.setItem('favoriteRecipes', JSON.stringify([...recipeFavorite, {
-            id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
-            // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
-            // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
-            strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
-            strCategory: urlRecipes[typeObj][0].strArea,
-            // strMeal: urlRecipes[typeObj][0].strMeal,
-            str:urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
+      if (
+        !(recipeFavorite.some((objeto) => (
+          Object.values(objeto).includes(clipBoard.id)
+        )))) {
+        setrecipeFavorite((prevState) => [
+          ...prevState,
+          {
+            id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal'
+              ? clipBoard.id : null,
+            strThumb: urlRecipes[typeObj][0].strDrinkThumb
+              || urlRecipes[typeObj][0].strMealThumb,
+            strCategory: urlRecipes[typeObj][0].strCategory,
+            str: urlRecipes[typeObj][0].strDrink || urlRecipes[typeObj][0].strMeal,
             date: '2/06/2020',
             type: clipBoard.type,
-          }]));
-        }
+          },
+        ]);
+        localStorage.setItem('favoriteRecipes', JSON.stringify([...recipeFavorite, {
+          id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal'
+            ? clipBoard.id : null,
+          strThumb: urlRecipes[typeObj][0].strDrinkThumb
+            || urlRecipes[typeObj][0].strMealThumb,
+          strCategory: urlRecipes[typeObj][0].strArea,
+          str: urlRecipes[typeObj][0].strDrink || urlRecipes[typeObj][0].strMeal,
+          date: '2/06/2020',
+          type: clipBoard.type,
+        }]));
+      }
 
       setFavoriteHeart(true);
     }
@@ -100,118 +101,3 @@ export default function FavoriteHeart() {
     </button>
   );
 }
-
-// import React, { useContext, useEffect } from 'react';
-// import RecipeContext from '../context/RecipeContext';
-// import whiteHeartIcon from '../images/whiteHeartIcon.png';
-// import blackHeartIcon from '../images/blackHeartIcon.png';
-// import '../css/recipeDetails.css';
-
-// export default function FavoriteHeart() {
-//   const { favoriteHeart, setFavoriteHeart, favoriteRecipe, setFavoriteRecipe } = useContext(RecipeContext);
-
-//   // UseEffect para verificar se o id da receita está presente no local storage ao renderizar o componente
-//   useEffect(() => {
-//     const storedFavorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-//     setFavoriteRecipe(storedFavorites);
-//   }, [setFavoriteRecipe]);
-
-//   // Função para manipular o clique no botão
-//   function handleClickFavorite() {
-//     const updatedFavorites = [...favoriteRecipe];
-
-//     if (favoriteHeart === true) {
-//       // Remover a receita do local storage e do estado
-//       const indexToRemove = updatedFavorites.findIndex((recipe) => recipe.id === 'ID_DA_RECEITA');
-//       updatedFavorites.splice(indexToRemove, 1);
-//     } else {
-//       // Adicionar a receita ao local storage e ao estado
-//       updatedFavorites.push({ id: 'ID_DA_RECEITA', otherData: 'OUTRAS_INFORMACOES' });
-//     }
-
-//     localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFavorites));
-//     setFavoriteRecipe(updatedFavorites);
-//     setFavoriteHeart(!favoriteHeart);
-//   }
-
-//   return (
-//     <button
-//       data-testid="favorite-btn"
-//       className="favorite-btn"
-//       type="button"
-//       onClick={() => handleClickFavorite()}
-//     >
-//       <img
-//         src={favoriteHeart === true ? blackHeartIcon : whiteHeartIcon}
-//         alt="favoritas"
-//       />
-//     </button>
-//   );
-// }
-
-// import React, { useContext } from 'react';
-// import RecipeContext from '../context/RecipeContext';
-// import whiteHeartIcon from '../images/whiteHeartIcon.png';
-// import blackHeartIcon from '../images/blackHeartIcon.png';
-// import '../css/recipeDetails.css';
-
-// export default function FavoriteHeart() {
-//   const { favoriteHeart, setFavoriteHeart } = useContext(RecipeContext);
-//   const { fetchComidas } = useContext(RecipeContext);
-
-//   async function handleClickFavorite() {
-//     if (favoriteHeart === true) {
-//       setFavoriteHeart(false);
-//       // localStorage.setItem( 'favoriteRecipes', JSON.stringify());
-//     } else {
-//       setFavoriteHeart(true);
-//     }
-//     console.log(`este é o que estou recebendo ${fetchComidas}`)
-//     // console.log(`este é o que estou recebendo em fav heart${favoriteHeart}`)
-//   }
-  
-//   return (
-//     <button
-//       data-testid="favorite-btn"
-//       className="favorite-btn"
-//       type="button"
-//       onClick={ () => handleClickFavorite() }
-//     >
-//       <img
-//         src={ favoriteHeart === true ? blackHeartIcon : whiteHeartIcon }
-//         alt="favoritas"
-//       />
-//     </button>
-//   );
-// }
-
-
-// (clipBoard.id !== urlRecipes[typeObj][0].idMeal || clipBoard.id !== urlRecipes[typeObj][0].idDrink) {
-//   setrecipeFavorite(prevState => [
-//     ...prevState,
-//     {
-//       id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
-//       // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
-//       // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
-//       strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
-//       strCategory: urlRecipes[typeObj][0].strCategory,
-//       // strMeal: urlRecipes[typeObj][0].strMeal,
-//       str: urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
-//       date: '2/06/2020',
-//       type: clipBoard.type,
-//     },
-//   ]);
-//   localStorage.setItem('favoriteRecipes', JSON.stringify([...recipeFavorite, {
-//     id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
-//     // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
-//     // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
-//     strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
-//     strCategory: urlRecipes[typeObj][0].strArea,
-//     // strMeal: urlRecipes[typeObj][0].strMeal,
-//     str:urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
-//     date: '2/06/2020',
-//     type: clipBoard.type,
-//   }]));
-//   setFavoriteHeart(true);
-// }
-// }
