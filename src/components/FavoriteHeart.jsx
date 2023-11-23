@@ -34,6 +34,7 @@ export default function FavoriteHeart() {
       let recipeDone = '';
       if (localStorage.getItem('favoriteRecipes')) {
         recipeDone = JSON.parse(localStorage.getItem('favoriteRecipes'));
+        setrecipeFavorite(recipeDone)
       }
     };
 
@@ -52,32 +53,34 @@ export default function FavoriteHeart() {
       setFavoriteHeart(false);
       setrecipeFavorite(updatedRecipes);
       localStorage.setItem('favoriteRecipes', JSON.stringify(updatedRecipes));
-    } else  {
-      setrecipeFavorite(prevState => [
-        ...prevState,
-        {
-          id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
-          // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
-          // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
-          strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
-          strCategory: urlRecipes[typeObj][0].strCategory,
-          // strMeal: urlRecipes[typeObj][0].strMeal,
-          str: urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
-          date: '2/06/2020',
-          type: clipBoard.type,
-        },
-      ]);
-      localStorage.setItem('favoriteRecipes', JSON.stringify([...recipeFavorite, {
-        id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
-        // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
-        // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
-        strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
-        strCategory: urlRecipes[typeObj][0].strArea,
-        // strMeal: urlRecipes[typeObj][0].strMeal,
-        str:urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
-        date: '2/06/2020',
-        type: clipBoard.type,
-      }]));
+    } else {
+        if (!( recipeFavorite.some(objeto =>  Object.values(objeto).includes(clipBoard.id)) )) {
+          setrecipeFavorite(prevState => [
+            ...prevState,
+            {
+              id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
+              // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
+              // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
+              strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
+              strCategory: urlRecipes[typeObj][0].strCategory,
+              // strMeal: urlRecipes[typeObj][0].strMeal,
+              str: urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
+              date: '2/06/2020',
+              type: clipBoard.type,
+            },
+          ]);
+          localStorage.setItem('favoriteRecipes', JSON.stringify([...recipeFavorite, {
+            id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
+            // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
+            // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
+            strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
+            strCategory: urlRecipes[typeObj][0].strArea,
+            // strMeal: urlRecipes[typeObj][0].strMeal,
+            str:urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
+            date: '2/06/2020',
+            type: clipBoard.type,
+          }]));
+        }
       setFavoriteHeart(true);
     }
   }
@@ -179,4 +182,35 @@ export default function FavoriteHeart() {
 //       />
 //     </button>
 //   );
+// }
+
+
+// (clipBoard.id !== urlRecipes[typeObj][0].idMeal || clipBoard.id !== urlRecipes[typeObj][0].idDrink) {
+//   setrecipeFavorite(prevState => [
+//     ...prevState,
+//     {
+//       id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
+//       // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
+//       // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
+//       strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
+//       strCategory: urlRecipes[typeObj][0].strCategory,
+//       // strMeal: urlRecipes[typeObj][0].strMeal,
+//       str: urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
+//       date: '2/06/2020',
+//       type: clipBoard.type,
+//     },
+//   ]);
+//   localStorage.setItem('favoriteRecipes', JSON.stringify([...recipeFavorite, {
+//     id: clipBoard.type === 'Drink' || clipBoard.type === 'Meal' ? clipBoard.id : null,
+//     // idMeal: clipBoard.type === 'Meal' ? clipBoard.id : null,
+//     // strMealThumb: urlRecipes[typeObj][0].strMealThumb ,
+//     strThumb: urlRecipes[typeObj][0].strDrinkThumb || urlRecipes[typeObj][0].strMealThumb ,
+//     strCategory: urlRecipes[typeObj][0].strArea,
+//     // strMeal: urlRecipes[typeObj][0].strMeal,
+//     str:urlRecipes[typeObj][0].strDrink ||  urlRecipes[typeObj][0].strMeal,
+//     date: '2/06/2020',
+//     type: clipBoard.type,
+//   }]));
+//   setFavoriteHeart(true);
+// }
 // }

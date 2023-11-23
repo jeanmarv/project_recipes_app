@@ -94,7 +94,7 @@ export default function RecipeProgress() {
       {
         urlRecipes[typeObj]
           && urlRecipes[typeObj].map((item, index) => (
-            <div key={ index }>
+            <div>
               <div className="card-n-share">
                 <div className="pic-name">
                   <img
@@ -152,7 +152,7 @@ export default function RecipeProgress() {
                 <ul>
                   {
                     listIngredients.map((ingredient, i) => (
-                      <li data-testid={ `${i}-ingredient-step` } key={ i }>
+                      <li data-testid={ `${i}-ingredient-step` }>
                         <input
                           onClick={ counterChecked }
                           value={ ingredient }

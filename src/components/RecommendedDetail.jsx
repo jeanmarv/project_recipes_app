@@ -25,7 +25,7 @@ export default function RecommendedDetail({ urlID, urlName }) {
     <div className="items">
       { recomendation[key] !== undefined ? recomendation[key].slice(0, NUM_MAX_CARDS)
         .map((item, index) => (
-          <div key={ index } data-testid={ `${index}-recomendation-card` } className="recommended-details">
+          <div data-testid={ `${index}-recomendation-card` } className="recommended-details">
             <img
               data-testid="recipe-photo"
               alt="foto"

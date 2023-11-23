@@ -17,7 +17,6 @@ export default function MadeRecipes() {
       <section className="done-recipes-section">
         {madeRecipeData.length > 0 && madeRecipeData.map((recipe, index) => (
           <MadeRecipeCard
-            key={ recipe.id }
             recipeData={ recipe }
             index={ index }
           />
