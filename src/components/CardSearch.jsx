@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 import DrinkContext from '../context/DrinkContext';
-import "../css/searchPage.css";
+import '../css/searchPage.css';
 
 const NUMBER_TWELVE = 10;
 
@@ -32,14 +32,15 @@ export default function CardSearch() {
     }
   }, [fetchedDrinks]);
 
-  console.log("firstFoods:", firstFoods);
-  console.log("firstDrinks:", firstDrinks);
+  console.log('firstFoods:', firstFoods);
+  console.log('firstDrinks:', firstDrinks);
 
   function mapFoods() {
     if (firstFoods) {
       return (
         firstFoods.map((food, index) => (
-          <Link to={ `comidas/${food.idMeal}`}
+          <Link
+            to={ `comidas/${food.idMeal}` }
             key={ food.id }
             data-testid={ `${index}-recipe-card` }
             className="search-card"
@@ -49,11 +50,14 @@ export default function CardSearch() {
               alt={ food.strMeal }
               src={ food.strMealThumb }
             />
-            <p>este é o idmeal: {food.idMeal}</p>
+            <p>
+              este é o idmeal:
+              {' '}
+              {food.idMeal}
+            </p>
             <span data-testid={ `${index}-card-name` }>
               { food.strMeal }
             </span>
-
 
           </Link>
         ))
@@ -65,7 +69,8 @@ export default function CardSearch() {
     if (firstDrinks) {
       return (
         firstDrinks.map((drink, index) => (
-          <Link to={ `bebidas/${drink.idDrink}`}
+          <Link
+            to={ `bebidas/${drink.idDrink}` }
             key={ drink.id }
             data-testid={ `${index}-recipe-card` }
             className="search-card"

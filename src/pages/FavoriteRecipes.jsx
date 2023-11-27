@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header2 from '../components/Header2';
 import Footer from '../components/Footer';
-import "../css/favorite.css";
+import '../css/favorite.css';
 
 export default function FavoriteRecipe() {
   const localStorageFavorite = JSON.parse(localStorage.getItem('favoriteRecipes')) || '';
@@ -32,50 +32,53 @@ export default function FavoriteRecipe() {
         </button>
         <button
           className="btn btn-outline-dark"
-          name="comida"
+          name="Meal"
           type="button"
           data-testid="filter-by-food-btn"
           onClick={ handleClick }
         >
-          Food
+          Comidas
         </button>
         <button
           className="btn btn-outline-dark"
-          name="bebida"
+          name="Drink"
           type="button"
           data-testid="filter-by-drink-btn"
           onClick={ handleClick }
         >
-          Drink
+          Bebidas
         </button>
-      <p>este é localstr{localStorageFavorite.length}</p>
       </div>
-
-      {localStorageFavorite.length > 0 && favoriteRecipe
-        .filter((recipe) => recipe.type === filterFavorites || filterFavorites === '')
-        .map((recipe, index) => (
-          <div key={ recipe.id }>
-            <Link to={ `/${recipe.type}s/${recipe.id}` }>
-              <img
-                width="100px"
-                src={ recipe.image }
-                alt=""
-                data-testid={ `${index}-horizontal-image` }
-              />
-              <h3
-                data-testid={ `${index}-horizontal-top-text` }
+      <div className="main-cards">
+        {localStorageFavorite.length > 0 && favoriteRecipe
+          .filter((recipe) => recipe.type === filterFavorites || filterFavorites === '')
+          .map((recipe, index) => (
+            <div className="indiv-cards" key={ index }>
+              <Link
+                to={ recipe.type === 'Meal'
+                  ? `/comidas/${recipe.id}` : `/bebidas/${recipe.id}` }
               >
-                {`${recipe.area || 'Alcoholic'} - ${recipe.category}`}
-              </h3>
-              <h2 data-testid={ `${index}-horizontal-name` }>
-                {recipe.name}
-              </h2>
-            </Link>
+                <img
+                  width="100px"
+                  src={ recipe.strThumb }
+                  alt=""
+                  data-testid={ `${index}-horizontal-image` }
+                />
+                <h2 data-testid={ `${index}-horizontal-name` }>
+                  {recipe.str}
+                </h2>
+                <h3
+                  data-testid={ `${index}-horizontal-top-text` }
+                >
+                  {recipe.strCategory ? `${recipe.strCategory}` : ''}
+                </h3>
+              </Link>
 
-          </div>
-          
-        ))}
-        <Footer />
+            </div>
+
+          ))}
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header2 from '../components/Header2';
 import MadeRecipeCard from '../components/MadeRecipeCard';
-import "../css/madeRecipes.css";
+import '../css/madeRecipes.css';
 import Footer from '../components/Footer';
 
 export default function MadeRecipes() {
