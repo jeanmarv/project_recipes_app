@@ -25,7 +25,7 @@ function App() {
     <BrowserRouter>
       <RecipeProvider>
         <DrinkProvider>
-          <Route exact path="/" component={ Login } />
+          <Route exact path="/project_recipes_app" component={ Login } />
           <Route exact path="/comidas" component={ MainPage } />
           <Route exact path="/perfil" component={ Profile } />
           <Route exact path="/receitas-favoritas" component={ FavoriteRecipes } />
