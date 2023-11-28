@@ -7,9 +7,9 @@ import '../css/footer.css';
 export default function Footer() {
   return (
     <footer className="footer" data-testid="footer">
-      <a data-testid="drinks-bottom-btn" href="/bebidas">
+      <button type="button" data-testid="drinks-bottom-btn" href="/bebidas">
         <img src={ drinkIcon } alt="Icone de bebida" />
-      </a>
+      </button>
       <a data-testid="explore-bottom-btn" href="/explorar">
         <img src={ exploreIcon } alt="Icone de explorar" />
       </a>
