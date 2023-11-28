@@ -1,6 +1,6 @@
 <h1>Recipes APP </h1>
 
-<p>Link do projeto: <link>https://vercel.com/jeanmarvs-projects/project-recipes-app</link></p>
+<p>Link do projeto: <link>https://project-recipes-app-mocha.vercel.app/</link></p>
 
 <h2>Índice</h2>
 <h4>- <a href="#funcionalidades">Funcionalidades</a></h4>
@@ -9,12 +9,13 @@
 
 <h2 id="funcionalidades">Funcionalidades</h2>
 
-<p></p>
 <p>-**Pesquisa de Receitas:** Encontre receitas de drinks e comidas.</p>
 <p>**Perfil do Usuário:** Salve e gerencie suas receitas favoritas.</p>
 <p>**Explorar Comidas:** Descubra receitas por ingredientes e local de origem.</p>
 <p>**Tela de Login:** Acesse o aplicativo com seu perfil.</p>
-foto - foto - foto
+<div>
+  <img src="https://recordit.co/FnnXq4u7tc" alt="demonstração da aplicação" />
+</div>
 <p>As pessoas realizadoras deste projeto são:</p>
 <p>- Matheus Luiz (<link>https://github.com/Mathluiz23</link>),</p>
 <p>- Rodrigo Cavalheiro (<link>https://github.com/oldcavalheiro</link>),</p>
