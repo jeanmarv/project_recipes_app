@@ -14,7 +14,7 @@
 <p>**Explorar Comidas:** Descubra receitas por ingredientes e local de origem.</p>
 <p>**Tela de Login:** Acesse o aplicativo com seu perfil.</p>
 <div>
-  <img src="https://recordit.co/FnnXq4u7tc" alt="demonstração da aplicação" />
+  <img src="./src/images/FnnXq4u7tc.gif" alt="demonstração da aplicação" />
 </div>
 <p>As pessoas realizadoras deste projeto são:</p>
 <p>- Matheus Luiz (<link>https://github.com/Mathluiz23</link>),</p>
