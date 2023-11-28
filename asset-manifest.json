@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/project_recipes_app/static/css/main.54ff8435.chunk.css",
-    "main.js": "/project_recipes_app/static/js/main.1db9f119.chunk.js",
-    "main.js.map": "/project_recipes_app/static/js/main.1db9f119.chunk.js.map",
+    "main.js": "/project_recipes_app/static/js/main.a323b620.chunk.js",
+    "main.js.map": "/project_recipes_app/static/js/main.a323b620.chunk.js.map",
     "runtime-main.js": "/project_recipes_app/static/js/runtime-main.e0352105.js",
     "runtime-main.js.map": "/project_recipes_app/static/js/runtime-main.e0352105.js.map",
     "static/css/2.7f1403ef.chunk.css": "/project_recipes_app/static/css/2.7f1403ef.chunk.css",
-    "static/js/2.12a40243.chunk.js": "/project_recipes_app/static/js/2.12a40243.chunk.js",
-    "static/js/2.12a40243.chunk.js.map": "/project_recipes_app/static/js/2.12a40243.chunk.js.map",
+    "static/js/2.01b1eb47.chunk.js": "/project_recipes_app/static/js/2.01b1eb47.chunk.js",
+    "static/js/2.01b1eb47.chunk.js.map": "/project_recipes_app/static/js/2.01b1eb47.chunk.js.map",
     "index.html": "/project_recipes_app/index.html",
-    "precache-manifest.4be6ef51bb9f8b1d201fc75d7143b326.js": "/project_recipes_app/precache-manifest.4be6ef51bb9f8b1d201fc75d7143b326.js",
+    "precache-manifest.9338fdc1274fda0b6603342e56fd1de8.js": "/project_recipes_app/precache-manifest.9338fdc1274fda0b6603342e56fd1de8.js",
     "service-worker.js": "/project_recipes_app/service-worker.js",
     "static/css/2.7f1403ef.chunk.css.map": "/project_recipes_app/static/css/2.7f1403ef.chunk.css.map",
     "static/css/main.54ff8435.chunk.css.map": "/project_recipes_app/static/css/main.54ff8435.chunk.css.map",
-    "static/js/2.12a40243.chunk.js.LICENSE.txt": "/project_recipes_app/static/js/2.12a40243.chunk.js.LICENSE.txt",
+    "static/js/2.01b1eb47.chunk.js.LICENSE.txt": "/project_recipes_app/static/js/2.01b1eb47.chunk.js.LICENSE.txt",
     "static/media/login.css": "/project_recipes_app/static/media/Leonardo_Diffusion_XL_i_want_a_imagem_similar_to_the_one_i_upl_1.84ba04d9.jpg",
     "static/media/blackHeartIcon.png": "/project_recipes_app/static/media/blackHeartIcon.07bc32cd.png",
     "static/media/drinkIcon.svg": "/project_recipes_app/static/media/drinkIcon.f87c47c3.svg",
@@ -27,8 +27,8 @@
   "entrypoints": [
     "static/js/runtime-main.e0352105.js",
     "static/css/2.7f1403ef.chunk.css",
-    "static/js/2.12a40243.chunk.js",
+    "static/js/2.01b1eb47.chunk.js",
     "static/css/main.54ff8435.chunk.css",
-    "static/js/main.1db9f119.chunk.js"
+    "static/js/main.a323b620.chunk.js"
   ]
 }
