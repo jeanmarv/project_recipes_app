@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import RecipeProvider from './context/RecipeProvider';
 import MainPage from './pages/MainPage';
@@ -22,7 +22,7 @@ import RecipeDetailss from './pages/RecipeDetailss';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <RecipeProvider>
         <DrinkProvider>
           <Route exact path="/" component={ Login } />
@@ -62,7 +62,7 @@ function App() {
           <Route exact path="/explorar/bebidas/area" component={ NotFound } />
         </DrinkProvider>
       </RecipeProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
