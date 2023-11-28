@@ -64,7 +64,7 @@ export default function CategoryButtons() {
     }
     setNameCategory(target.id);
   }
-  console.log(nameCategory);
+
   return (
     <div className="category-buttons">
       <button

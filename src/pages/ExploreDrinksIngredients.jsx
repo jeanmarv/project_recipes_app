@@ -19,7 +19,6 @@ export default function ExploreDrinksIngredients() {
 
   const TWELVE = 12;
   const dataSliced = data.slice(0, TWELVE);
-  console.log(dataSliced);
 
   if (data === undefined) {
     return <p>Loading...</p>;

@@ -32,9 +32,6 @@ export default function CardSearch() {
     }
   }, [fetchedDrinks]);
 
-  console.log('firstFoods:', firstFoods);
-  console.log('firstDrinks:', firstDrinks);
-
   function mapFoods() {
     if (firstFoods) {
       return (
@@ -50,11 +47,6 @@ export default function CardSearch() {
               alt={ food.strMeal }
               src={ food.strMealThumb }
             />
-            <p>
-              este é o idmeal:
-              {' '}
-              {food.idMeal}
-            </p>
             <span data-testid={ `${index}-card-name` }>
               { food.strMeal }
             </span>

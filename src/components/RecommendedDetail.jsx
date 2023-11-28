@@ -5,7 +5,6 @@ import fetchRecipeRecomendation from '../services/fetchRecipeRecomendation';
 import '../css/recommended.css';
 
 export default function RecommendedDetail({ urlID, urlName }) {
-  // console.log(urlName);
   const {
     recomendation,
     setRecomendation,
@@ -19,8 +18,6 @@ export default function RecommendedDetail({ urlID, urlName }) {
     setKey(urlName === 'comidas' ? 'drinks' : 'meals');
   }, []);
 
-  // console.log(key);
-  // console.log(recomendation[key]);
   return (
     <div className="items">
       { recomendation[key] !== undefined ? recomendation[key].slice(0, NUM_MAX_CARDS)

@@ -18,9 +18,7 @@ export default function RecipeProgress() {
 
   const [typeObj, setTypeObj] = useState(''); // tipo de receita, comida ou bebida
   const [urlRecipes, setUrlRecipes] = useState([]);
-  // console.log(urlRecipes);
   const [clipBoard, setClipBoard] = useState({ id: 0, type: '' }); // copia id e type do item na page
-  // console.log(clipBoard);
   const [listIngredients, setListIngredients] = useState([]); // trás os ingredientes
   const [quantity, setQuantity] = useState([]); // trás a quantidade de cada ingrediente
   const { recipeInProgress, setRecipeInProgress, linkCopied } = useContext(RecipeContext);
@@ -50,7 +48,6 @@ export default function RecipeProgress() {
       }
 
       if (urlRecipes[typeObj]) {
-        console.log(urlRecipes[typeObj]);
         urlRecipes[typeObj]
           .map(({ strMealThumb,
             strDrinkThumb,

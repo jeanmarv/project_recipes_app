@@ -97,9 +97,7 @@ export default function SearchBar() {
 
   function drinksPage() {
     if (fetchedDrinks.drinks) {
-      console.log('dentro do if 1111111', fetchedDrinks.drinks);
       if (fetchedDrinks.drinks && fetchedDrinks.drinks.length === 1) {
-        console.log('dentro do if 2', fetchedDrinks.drinks);
         history.push(`/bebidas/${fetchedDrinks.drinks[0].idDrink}`);
       }
     } else { global.alert(notFound); }
