@@ -18,27 +18,7 @@
   font-weight: 500;
   justify-content: space-evenly;
   margin: auto;
-  opacity: 85%;
   text-decoration: none;
   width: 3%;
   z-index: 2;
-}
-
-.footer button{
-  align-items: center;
-  background: none;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  font-weight: 500;
-  justify-content: space-evenly;
-  margin: auto;
-  opacity: 85%;
-  text-decoration: none;
-  width: 3%;
-}
-
-.footer img {
-  height: 45px;
-  width: 45px;
 }
