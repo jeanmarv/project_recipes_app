@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import drinkIcon from '../images/38706.png';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
@@ -13,9 +14,9 @@ export default function Footer() {
       <a data-testid="explore-bottom-btn" href="/explorar">
         <img src={ exploreIcon } alt="Icone de explorar" />
       </a>
-      <a data-testid="food-bottom-btn" href="/comidas">
+      <Link data-testid="food-bottom-btn" to="/comidas">
         <img src={ mealIcon } alt="Icone de comida" />
-      </a>
+      </Link>
     </footer>
   );
 }
