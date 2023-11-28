@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import SearchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
@@ -22,32 +22,31 @@ const title = (path) => {
 };
 export default function Header() {
   const { pathname } = useLocation();
-  const history = useHistory();
   const [showInput, setShowInput] = useState(false);
 
   return (
     <header id="header2">
-      <input
-        type="image"
-        onClick={ () => history.push('/perfil') }
+      <a
+        href="/perfil"
         data-testid="profile-top-btn"
-        src={ profileIcon }
-        alt="profile-icon"
         className="perfil-img"
-      />
+      >
+        <img src={ profileIcon } alt="profile-icon" />
+      </a>
       <h1 data-testid="page-title" className="pathname">{ title(pathname) }</h1>
       { (title(pathname) === 'Comidas'
         || title(pathname) === 'Bebidas'
         || title(pathname) === 'Explorar Origem')
         ? (
-          <input
+          <button
             className="search-btn"
-            type="image"
+            type="button"
             data-testid="search-top-btn"
-            src={ SearchIcon }
-            alt="search-icon"
             onClick={ () => setShowInput(!showInput) }
-          />) : null }
+          >
+            <img src={ SearchIcon } alt="search-icon" />
+          </button>
+        ) : null }
       { showInput && <SearchBar /> }
     </header>
   );
