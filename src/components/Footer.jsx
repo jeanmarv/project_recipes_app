@@ -1,5 +1,5 @@
 import React from 'react';
-import drinkIcon from '../images/drinkIcon.svg';
+import drinkIcon from '../images/38706.png';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 import '../css/footer.css';

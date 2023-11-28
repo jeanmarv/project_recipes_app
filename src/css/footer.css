@@ -21,3 +21,8 @@
   text-decoration: none;
   width: 3%;
 }
+
+.footer img {
+  height: 45px;
+  width: 45px;
+}
